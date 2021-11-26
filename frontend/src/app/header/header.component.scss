@@ -1,0 +1,43 @@
+@import '../../utilities/index.scss';
+
+.header-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 100%;
+    padding: 1.8rem 0;
+    background-color: $primary-color;
+
+    .bar {
+        display: inline-flex;
+        flex-direction: row;
+        margin: auto;
+        justify-self: center;
+        justify-content: space-between;
+        align-items: center;
+        width: 85%;
+    }
+
+    .navigation-links > ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            padding: 0 2rem;
+
+            a {
+                text-decoration: none;
+
+                h1 {
+                    font-size: 1.5rem;
+                 }
+            }
+        }
+    }
+
+    h1 {
+        color: $background-color;
+    }
+}

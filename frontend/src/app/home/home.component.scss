@@ -1,0 +1,39 @@
+@import '../../utilities/index.scss';
+
+.home-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+
+    .left-section,
+    .right-section {
+        display: flex;
+        width: 35%;
+
+        h1, p {
+            color: $default-text-color;
+            padding: 1rem 0;
+        }
+
+        #latest-product {
+            height: auto;
+            width: 100%;
+            border-radius: $card-borders;
+            box-shadow: $default-box-shadow;
+        }
+    }
+
+    .left-section {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+    }
+}

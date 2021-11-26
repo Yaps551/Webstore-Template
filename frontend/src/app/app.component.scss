@@ -1,0 +1,27 @@
+@import '../utilities/index.scss';
+
+body {
+    height: 100vh;
+    margin: 0;
+    background: $background-color url('../assets/images/background-design scaled.png') no-repeat right;
+    background-size: cover;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+
+    .row.header {
+        flex: 0 1 auto;
+    }
+
+    .row.content {
+        flex: 1 1 auto;
+    }
+
+    .row.footer {
+        flex: 0 1 40px;
+        color: $highlight-color;
+    }
+}
