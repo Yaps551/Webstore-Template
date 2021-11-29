@@ -40,4 +40,8 @@
     h1 {
         color: $background-color;
     }
+
+    h1.active-link {
+        color: $highlight-color;
+    }
 }

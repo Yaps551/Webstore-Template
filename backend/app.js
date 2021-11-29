@@ -15,7 +15,7 @@ const port = process.env.PORT;
 
 // Cors options
 var corsOptions = {
-    origin: process.env.APP_PORT,
+    origin: `http://localhost:${process.env.APP_PORT}`,
     methods: 'GET, POST, PUT, PATCH, DELETE',
     allowedHeaders: 'Content-Type, Authorization'
 };

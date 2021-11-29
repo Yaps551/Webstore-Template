@@ -1,0 +1,5 @@
+<p>Products:</p>
+
+<p *ngIf="products.length < 1">No products available</p>
+<h1 *ngIf="errorMessage != null">{{ errorMessage }}</h1>
+<app-product *ngFor="let product of products" [product]="product"></app-product>

@@ -22,6 +22,9 @@ body {
 
     .row.footer {
         flex: 0 1 40px;
-        color: $highlight-color;
+
+        h1 {
+            color: $highlight-color;
+        }
     }
 }

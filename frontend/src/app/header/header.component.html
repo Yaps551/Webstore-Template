@@ -11,23 +11,23 @@
         <div class="navigation-links">
             <ul>
                 <li>
-                    <a href="">
-                        <h1>Store</h1>
+                    <a routerLink="/">
+                        <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</h1>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <h1>Contact</h1>
+                    <a routerLink="/store">
+                        <h1 routerLinkActive="active-link">Store</h1>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <h1>About</h1>
+                    <a routerLink="/cart">
+                        <h1 routerLinkActive="active-link">Cart</h1>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <h1>Cart</h1>
+                    <a routerLink="/contact">
+                        <h1 routerLinkActive="active-link">Contact</h1>
                     </a>
                 </li>
             </ul>

@@ -39,7 +39,7 @@ exports.createProduct = (req, res, next) => {
         description: description
     }).then(() => {
         res.status(201).json({
-            message: 'Post created successfully.'
+            message: 'Product created successfully.'
         });
     })
     .catch(err => {
