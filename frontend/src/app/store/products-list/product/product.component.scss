@@ -9,6 +9,7 @@
     border-radius: 2%;
     height: 100%;
     width: 100%;
+    background-color: rgba($color: $background-color, $alpha: 0.3);
 
     box-shadow: $primary-color-box-shadow;
 }
@@ -41,7 +42,7 @@
       display: block;
       content: "";
       width: 100%;
-      padding-top: (4 / 3) * 100%; // Aspect ratio (height / width)
+      padding-top: (9 / 16) * 100%; // Aspect ratio (height / width)
     }
 
     img {
@@ -58,9 +59,31 @@
 }
 
 .product-bottom-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10%;
     height: 30%;
 
     .product-description {
         text-align: center;
+    }
+
+    .options {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+
+        button {
+            background-color: $button-color;
+            border: none;
+            color: $highlight-color;
+            padding: 0.5rem;
+            border-radius: 8%;
+
+            cursor: pointer;
+        }
     }
 }

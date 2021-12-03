@@ -41,7 +41,7 @@
             height: 40%;
         }
 
-        @media only screen and (max-width: $mobile) {
+        @media only screen and (max-width: $mobile-large) {
             flex: 0 1 80%;
             max-width: 80%;
             height: 50%;

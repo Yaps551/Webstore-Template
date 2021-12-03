@@ -2,11 +2,48 @@
 
 .header-wrapper {
     display: flex;
+    box-sizing: border-box;
     justify-content: center;
+    height: 4rem;
     width: 100%;
     min-width: 100%;
-    padding: 1.8rem 0;
     background-color: $primary-color;
+
+    .icon {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 5%;
+
+        @media only screen and (max-width: $tablet) {
+            width: 10%;
+        }
+
+        // Stripe colors based on current theme
+        .stripe {
+            flex: 1 1 auto;
+        }
+
+        .primary {
+            background-color: $primary-color;
+        }
+
+        .secondary {
+            background-color: $secondary-color;
+        }
+
+        .highlight {
+            background-color: $highlight-color;
+        }
+
+        .background {
+            background-color: $background-color;
+        }
+
+        .text {
+            background-color: $default-text-color;
+        }
+    }
 
     .bar {
         display: inline-flex;
@@ -15,17 +52,24 @@
         justify-self: center;
         justify-content: space-between;
         align-items: center;
+        height: 100%;
         width: 85%;
     }
 
-    .navigation-links > ul {
+    .navigation-links {
         display: flex;
-        margin: 0;
+        justify-content: flex-end;
+        flex: 0 1 50%;
+        min-width: 20%;
         padding: 0;
         list-style: none;
 
+        @media only screen and (max-width: $mobile-large) {
+            flex-direction: column;
+        }
+
         li {
-            padding: 0 2rem;
+            padding: 0 5%;
 
             a {
                 text-decoration: none;

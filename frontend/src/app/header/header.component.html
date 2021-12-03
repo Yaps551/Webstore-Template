@@ -1,36 +1,38 @@
 <div class="header-wrapper">
+    <div class="icon">
+        <div class="stripe background"></div>
+        <div class="stripe text"></div>
+        <div class="stripe primary"></div>
+        <div class="stripe secondary"></div>
+        <div class="stripe highlight"></div>
+    </div>
     <div class="bar">
         <div class="title-section">
-            <div class="title-icon">
-                
-            </div>
             <h1 class="title">
                 Webshop
             </h1>
         </div>
-        <div class="navigation-links">
-            <ul>
-                <li>
-                    <a routerLink="/">
-                        <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</h1>
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/store">
-                        <h1 routerLinkActive="active-link">Store</h1>
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/cart">
-                        <h1 routerLinkActive="active-link">Cart</h1>
-                    </a>
-                </li>
-                <li>
-                    <a routerLink="/contact">
-                        <h1 routerLinkActive="active-link">Contact</h1>
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <ul class="navigation-links">
+            <li>
+                <a routerLink="/">
+                    <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</h1>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/store">
+                    <h1 routerLinkActive="active-link">Store</h1>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/cart">
+                    <h1 routerLinkActive="active-link">Cart</h1>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/contact">
+                    <h1 routerLinkActive="active-link">Contact</h1>
+                </a>
+            </li>
+        </ul>
     </div>    
 </div>
