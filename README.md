@@ -17,21 +17,21 @@ ImgBB is used to host the images used for products.
 1. Add .env file to the backend folder.
 2. Add the following content to the .env file and fill in the required fields:
 
-    # API settings
+    #API settings
     PORT=[desired port for the backend]
 
-    # Webapp settings
+    #Webapp settings
     APP_PORT=4200
 
 
-    # PostgreSQL settings
+    #PostgreSQL settings
     PG_HOST=localhost
     PG_USER=postgres
     PG_PASSWORD=[Your postgreSQL password]
     PG_DATABASE=[Your postgreSQL database]
     PG_PORT=[Your PostgreSQL port, 5432 by default]
 
-    # ImgBB settings
+    #ImgBB settings
     IMGBB_KEY=[Your IMGBB API key]
     
 3. Run npm install
