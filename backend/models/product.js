@@ -13,7 +13,8 @@ const Product = sequelize.define('product', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    description: Sequelize.STRING
+    description: Sequelize.STRING,
+    imageUrl: Sequelize.STRING
 });
 
 module.exports = Product;

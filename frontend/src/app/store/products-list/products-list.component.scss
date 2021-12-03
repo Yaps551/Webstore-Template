@@ -1,0 +1,50 @@
+@import '../../../utilities/index.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    // box-sizing: border-box;
+}
+
+.product-list-wrapper {
+    height: 100%;
+    width: 90%;
+    margin: auto;
+}
+
+.options-bar {
+    display: flex;
+    flex-direction: row;
+
+    .option {
+        margin: 1.5%;
+    }
+}
+
+.items {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    gap: 3%;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .item {
+        flex: 0 1 30%;
+        max-width: 30%;
+        height: 50%;
+
+        @media only screen and (max-width: $tablet) {
+            flex: 0 1 45%;
+            max-width: 45%;
+            height: 40%;
+        }
+
+        @media only screen and (max-width: $mobile) {
+            flex: 0 1 80%;
+            max-width: 80%;
+            height: 50%;
+        }
+    }
+}

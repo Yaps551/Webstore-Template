@@ -33,11 +33,14 @@ exports.getProduct = (req, res, next) => {
 exports.createProduct = (req, res, next) => {
     const name = req.body.name;
     const description = req.body.description;
+    const imageUrl = req.body.imageUrl;
 
     Product.create({
         name: name,
-        description: description
-    }).then(() => {
+        description: description,
+        imageUrl: imageUrl
+    })
+    .then(() => {
         res.status(201).json({
             message: 'Product created successfully.'
         });
