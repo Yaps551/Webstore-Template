@@ -5,11 +5,11 @@
 }
 
 .product-wrapper {
-    border: 2px solid $primary-color;
-    border-radius: 2%;
+    border-bottom: 2px solid $primary-color;
+    // border-radius: 2%;
     height: 100%;
     width: 100%;
-    background-color: rgba($color: $background-color, $alpha: 0.3);
+    background-color: rgba($color: $secondary-color, $alpha: 0.1);
 
     box-shadow: $primary-color-box-shadow;
 }
@@ -19,7 +19,7 @@
     flex-direction: column;
     gap: 5%;
     height: 100%;
-    padding: 5%;
+    padding: 5% 1%;
 }
 
 .product-name

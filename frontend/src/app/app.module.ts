@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductsListComponent } from './store/products-list/products-list.component';
 import { ProductComponent } from './store/products-list/product/product.component';
+import { OptionsPanelComponent } from './store/options-panel/options-panel.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     CartComponent,
     ContactComponent,
     ProductsListComponent,
-    ProductComponent
+    ProductComponent,
+    OptionsPanelComponent
   ],
   imports: [
     BrowserModule,

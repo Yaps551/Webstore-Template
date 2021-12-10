@@ -1,14 +1,4 @@
 <div class="product-list-wrapper">
-    <div class="options-bar">
-        <div class="option">
-            <label for="filter">Filter</label>
-            <input id="filter" type="text">
-        </div>
-        <div class="option">
-            <label for="sort">Sort by</label>
-            <select id="sort" name="" id=""></select>
-        </div>
-    </div>
     <p *ngIf="products.length < 1">No products available</p>
     <h1 *ngIf="errorMessage != null">{{ errorMessage }}</h1>
     <div class="items">

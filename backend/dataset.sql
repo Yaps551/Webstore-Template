@@ -1,4 +1,4 @@
-CREATE DATABASE "Webshop"
+CREATE DATABASE Webshop
 WITH
 OWNER = postgres
 ENCODING = 'UTF8'
