@@ -1,0 +1,17 @@
+<form>
+    <div class="input-fields">
+        <div class="input-field">
+            <label for="email">E-mail</label>
+            <input type="email" id="email">
+        </div>
+        <div class="input-field">
+            <label for="password">Password</label>
+            <input type="password" id="password">
+        </div>
+    </div>
+    <div class="buttons">
+        <button type="submit">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
+        |
+        <button (click)="onSwitchMode()" type="button">Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}</button>
+    </div>
+</form>

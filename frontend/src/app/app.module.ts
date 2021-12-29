@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -12,13 +11,8 @@ import { ContactComponent } from './contact/contact.component';
 import { ProductsListComponent } from './store/products-list/products-list.component';
 import { ProductComponent } from './store/products-list/product/product.component';
 import { OptionsPanelComponent } from './store/options-panel/options-panel.component';
-
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'store', component: StoreComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'contact', component: ContactComponent},
-];
+import { AuthComponent } from './auth/auth.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -30,12 +24,13 @@ const appRoutes: Routes = [
     ContactComponent,
     ProductsListComponent,
     ProductComponent,
-    OptionsPanelComponent
+    OptionsPanelComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
