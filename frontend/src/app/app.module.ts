@@ -13,6 +13,7 @@ import { ProductComponent } from './store/products-list/product/product.componen
 import { OptionsPanelComponent } from './store/options-panel/options-panel.component';
 import { AuthComponent } from './auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,12 +26,13 @@ import { AppRoutingModule } from './app-routing.module';
     ProductsListComponent,
     ProductComponent,
     OptionsPanelComponent,
-    AuthComponent
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

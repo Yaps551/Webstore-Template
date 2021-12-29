@@ -5,9 +5,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const productRouter = require('./routes/productRouter');
+const authRouter = require('./routes/authRouter');
 
 const sequelize = require('./util/database');
 const product = require('./models/product'); // Import to execute
+const user = require('./models/user'); // Import to execute
 
 const app = express();
 
@@ -36,6 +38,7 @@ app.get('/', (req, res, next) => {
 
 // Routes
 app.use('/product', productRouter);
+app.use('/auth', authRouter);
 
 sequelize
 .sync()
