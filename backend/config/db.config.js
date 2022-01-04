@@ -1,5 +1,3 @@
-const dotenv = require('dotenv').config();
-
 module.exports = {
     HOST: process.env.PG_HOST            || 'localhost',
     USER: process.env.PG_USER            || '5432',

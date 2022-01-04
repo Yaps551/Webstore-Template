@@ -17,6 +17,9 @@ const User = sequelize.define('user', {
         type: Sequelize.STRING,
         allowNull: false
     },
+    // refreshToken: {
+    //     type: Sequelize.STRING
+    // }
 });
 
 module.exports = User;

@@ -2,14 +2,15 @@ const dotenv = require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const productRouter = require('./routes/productRouter');
 const authRouter = require('./routes/authRouter');
 
 const sequelize = require('./util/database');
-const product = require('./models/product'); // Import to execute
-const user = require('./models/user'); // Import to execute
+const product = require('./models/product'); // Import solely to execute
+const user = require('./models/user'); // Import solely to execute
 
 const app = express();
 
@@ -30,6 +31,9 @@ app.use(bodyParser.json());
 
 // Parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
+
+// Parse cookies
+app.use(cookieParser());
 
 // Test route
 app.get('/', (req, res, next) => {
