@@ -47,6 +47,12 @@ exports.postLogin = (req, res, next) => {
     })
 };
 
+exports.postLogout = (req, res, next) => {
+    res.clearCookie("Token");
+
+    res.status(200).json({ message: "Logged out successfully" });
+}
+
 exports.postSignup = (req, res, next) => {
     const email = req.body.email;
     const password = req.body.password;
