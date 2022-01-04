@@ -7,6 +7,12 @@ export class authDao {
     constructor(private dao: Dao) {}
     
     login(email: string, password: string) {
-        
+        const body = { email: email, password: password };
+
+        return this.dao.sendPostRequest('auth/login', body);
+    }
+
+    logout() {
+        return this.dao.sendGetRequest('auth/logout');
     }
 }

@@ -6,7 +6,7 @@ const { authenticateToken } = require('../middleware/isAuth');
 
 
 // GET /product/products
-router.get('/products', productController.getProducts);
+router.get('/products', authenticateToken, productController.getProducts);
 
 // GET /product/:productId
 router.get('/:productId', productController.getProduct);

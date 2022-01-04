@@ -40,7 +40,7 @@ exports.postLogin = (req, res, next) => {
                 signed: true
             });
 
-            res.send();
+            res.status(200).json({ message: "Logged in successfully" });
         });
     })
     .catch(err => {

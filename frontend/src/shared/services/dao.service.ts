@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
@@ -10,10 +10,18 @@ export class Dao {
     constructor(private httpC: HttpClient) {}
 
     sendGetRequest(urlPath: string): Observable<any> {
-        return this.httpC.get<any>(this.dbAddress + urlPath);
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+        
+        return this.httpC.get<any>(this.dbAddress + urlPath, { headers: headers, withCredentials: true });
     }
 
-    sendPostRequest(urlPath: string, body: object): Observable<any> {
-        return this.httpC.post<any>(this.dbAddress + urlPath, body);
+    sendPostRequest(urlPath: string, body: unknown): Observable<any> {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+
+        return this.httpC.post<any>(this.dbAddress + urlPath, body, { headers: headers, withCredentials: true });
     }
 }
