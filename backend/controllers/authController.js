@@ -36,7 +36,8 @@ exports.postLogin = (req, res, next) => {
 
             res.cookie("Token", token, {
                 secure: false, // FIXME set to true for HTTPS
-                httpOnly: true
+                httpOnly: true,
+                signed: true
             });
 
             res.send();
@@ -48,9 +49,15 @@ exports.postLogin = (req, res, next) => {
 };
 
 exports.postLogout = (req, res, next) => {
-    res.clearCookie("Token");
+    const token = req.signedCookies.Token;
 
-    res.status(200).json({ message: "Logged out successfully" });
+    if (token) {
+        res.clearCookie("Token");
+
+        return res.status(200).json({ message: "Logged out successfully" });
+    } else {
+        return res.status(404).json({ message: "User not logged in" });
+    }
 }
 
 exports.postSignup = (req, res, next) => {

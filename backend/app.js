@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Parse cookies
-app.use(cookieParser());
+app.use(cookieParser(process.env.COOKIE_PARSER_KEY));
 
 // Test route
 app.get('/', (req, res, next) => {
