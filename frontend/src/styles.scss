@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 h1, h2, p, label {
     font-family: 'Outfit', sans-serif;
     color: $default-text-color;

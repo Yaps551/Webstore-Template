@@ -27,13 +27,13 @@ exports.postLogin = (req, res, next) => {
             if (!isEqual) {
                 return res.status(401);
             }
-            // Generate tokens
-    
+            // Generate token
             const token = jwtGenerator.generateAccessToken({
                 email: loadedUser.email,
                 userId: loadedUser._id.toString()
             });
 
+            // Set cookies
             res.cookie("Token", token, {
                 secure: false, // FIXME set to true for HTTPS
                 httpOnly: true,

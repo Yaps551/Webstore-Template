@@ -2,16 +2,18 @@
     <div class="input-fields">
         <div class="input-field">
             <label for="email">E-mail</label>
-            <input type="email" id="email" ngModel name="email" required email>
+            <input type="email" id="email" ngModel name="email" required email autocomplete="email">
         </div>
         <div class="input-field">
             <label for="password">Password</label>
-            <input type="password" id="password" ngModel name="password" required minlength="5">
+            <input type="password" id="password" ngModel name="password" required minlength="5" autocomplete="current-password">
         </div>
     </div>
     <div class="buttons">
         <button type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
         |
         <button (click)="onSwitchMode()" type="button">Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}</button>
+        |
+        <button (click)="onQuickLogin()" type="button">Quick Login</button>
     </div>
 </form>

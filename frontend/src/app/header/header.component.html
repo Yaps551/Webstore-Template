@@ -34,8 +34,11 @@
                 </a>
             </li>
             <li>
-                <a routerLink="/auth">
+                <a routerLink="/auth" *ngIf="!isLoggedIn">
                     <h1 routerLinkActive="active-link">Login</h1>
+                </a>
+                <a *ngIf="isLoggedIn">
+                    <h1 class="clickable" (click)="onLogout()">Logout</h1>
                 </a>
             </li>
         </ul>
