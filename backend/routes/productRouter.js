@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const productController = require('../controllers/productController');
-const { authenticateToken } = require('../middleware/isAuth');
+const { authenticateToken, isAdmin } = require('../middleware/isAuth');
 
 
 // GET /product/products
-router.get('/products', authenticateToken, productController.getProducts);
+router.get('/products', authenticateToken, isAdmin, productController.getProducts);
 
 // GET /product/:productId
 router.get('/:productId', productController.getProduct);

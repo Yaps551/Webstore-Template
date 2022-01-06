@@ -23,7 +23,7 @@
                     <h1 routerLinkActive="active-link">Store</h1>
                 </a>
             </li>
-            <li>
+            <li *ngIf="isLoggedIn">
                 <a routerLink="/cart">
                     <h1 routerLinkActive="active-link">Cart</h1>
                 </a>

@@ -30,7 +30,8 @@ exports.postLogin = (req, res, next) => {
             // Generate token
             const token = jwtGenerator.generateAccessToken({
                 email: loadedUser.email,
-                userId: loadedUser._id.toString()
+                userId: loadedUser._id.toString(),
+                role: loadedUser.role
             });
 
             // Set cookies
@@ -58,7 +59,7 @@ exports.postLogout = (req, res, next) => {
     } else {
         return res.status(404).json({ message: "User not logged in" });
     }
-}
+};
 
 exports.postSignup = (req, res, next) => {
     const email = req.body.email;

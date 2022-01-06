@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { authDao } from 'src/shared/services/auth-dao.service';
 import { UserService } from 'src/shared/services/user.service';
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   private loggedInSub: Subscription;
 
-  constructor(private userService: UserService, private authDao: authDao) { }
+  constructor(private userService: UserService, private authDao: authDao, private router: Router) { }
 
   ngOnInit(): void {
     this.handleSubscriptions();
@@ -27,7 +28,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   handleSubscriptions(): void {
     this.loggedInSub = this.userService.isLoggedIn.subscribe(isLoggedIn => {
-      console.log("ASD");
       this.isLoggedIn = isLoggedIn;
     });
   }
@@ -38,6 +38,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       next: response => {
         localStorage.removeItem("LoggedIn");
         this.userService.updateLoginStatus();
+        
+        this.router.navigate(['/']);
       },
       error: err => console.log(err)
     });

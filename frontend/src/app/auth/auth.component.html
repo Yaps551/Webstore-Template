@@ -16,4 +16,7 @@
         |
         <button (click)="onQuickLogin()" type="button">Quick Login</button>
     </div>
+    <div class="notification" *ngIf="notificationMessage">
+        <p>{{ notificationMessage }}</p>
+    </div>
 </form>

@@ -5,6 +5,12 @@ import { Dao } from "./dao.service";
 export class authDao {
 
     constructor(private dao: Dao) {}
+
+    signup(email: string,password: string) {
+        const body = { email: email, password: password };
+
+        return this.dao.sendPostRequest('auth/signup', body);
+    }
     
     login(email: string, password: string) {
         const body = { email: email, password: password };
