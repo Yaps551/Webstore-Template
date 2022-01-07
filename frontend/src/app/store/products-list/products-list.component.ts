@@ -22,14 +22,6 @@ export class ProductsListComponent implements OnInit {
     .subscribe({
       next: products => { this.products = products; this.errorMessage = null },
       error: err => this.errorMessage = err.statusText,
-      complete: () => {
-        this.products.push(new Product('123124', 'Additional test product', 'Added programatically', null, null, null));
-        this.products.push(new Product('123124', 'Additional test product', 'Added programatically', null, null, null));
-        this.products.push(new Product('123124', 'Additional test product', 'Added programatically', null, null, null));
-        this.products.push(new Product('123124', 'Additional test product', 'Added programatically', null, null, null));
-        this.products.push(new Product('123124', 'Additional test product', 'Added programatically', null, null, null));
-        this.products.push(new Product('123124', 'Additional test product', 'Added programatically', null, null, null));
-      }
     });
   }
 

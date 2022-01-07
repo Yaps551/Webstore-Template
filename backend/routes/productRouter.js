@@ -6,12 +6,15 @@ const { authenticateToken, isAdmin } = require('../middleware/isAuth');
 
 
 // GET /product/products
-router.get('/products', authenticateToken, isAdmin, productController.getProducts);
+router.get('/products', isAdmin, productController.getProducts);
 
 // GET /product/:productId
 router.get('/:productId', productController.getProduct);
 
 // POST /product/create
-router.post('/create', productController.createProduct);
+router.post('/create', authenticateToken, productController.postProduct);
+
+// PUT /product/update
+router.put('/update', authenticateToken, productController.putProduct);
 
 module.exports = router;

@@ -30,7 +30,7 @@ exports.getProduct = (req, res, next) => {
     });
 };
 
-exports.createProduct = (req, res, next) => {
+exports.postProduct = (req, res, next) => {
     const name = req.body.name;
     const description = req.body.description;
     const imageUrl = req.body.imageUrl;
@@ -48,4 +48,28 @@ exports.createProduct = (req, res, next) => {
     .catch(err => {
         console.log(err);
     });
+}
+
+exports.putProduct = (req, res, next) => {
+    const prodId = req.body._id;
+    const name = req.body.name;
+    const description = req.body.description;
+    const imageUrl = req.body.imageUrl;
+
+    Product.findByPk(prodId)
+    .then(product => {
+        if (!product) return res.status(404).json({message: 'Product not found'});
+
+        product.name = name ? name : product.name;
+        product.description = description ? description : product.description;
+        product.imageUrl = imageUrl ? imageUrl : product.imageUrl;
+
+        return product.save()
+    })
+    .then(() => {
+        res.status(200).json({
+            message: 'Product updated successfully'
+        });
+    })
+    .catch(err => console.log(err));
 }
