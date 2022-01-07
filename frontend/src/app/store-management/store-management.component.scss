@@ -1,0 +1,16 @@
+.management-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    gap: 5%;
+}
+
+.products {
+    height: 100%;
+    width: 50%;
+    overflow: auto;
+
+    h1 {
+        margin-bottom: 3%;
+    }
+}

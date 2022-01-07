@@ -1,0 +1,18 @@
+<form class="product-wrapper" #productForm="ngForm" (keydown.enter)="$event.preventDefault()">
+    <div class="product-image">
+        <img [src]="product.imageUrl" alt="no image found">
+    </div>
+    <div class="product-details">
+        <div class="name">
+            <input type="text" (change)="onChanges()" ngModel="{{ product.name }}" id="name" name="name" maxlength="25">
+        </div>
+        <div class="description">
+            <input type="text" (change)="onChanges()" ngModel="{{ product.description }}" name="description">
+        </div>
+    </div>
+    <div class="buttons">
+        <button [disabled]="!changesMade" (click)="onSaveChanges(productForm)">Save changes</button>
+        <button [disabled]="!changesMade" (click)="onDiscardChanges(productForm)">Discard changes</button>
+        <button>Delete product</button>
+    </div>
+</form>

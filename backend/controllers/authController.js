@@ -38,7 +38,8 @@ exports.postLogin = (req, res, next) => {
             res.cookie("Token", token, {
                 secure: false, // FIXME set to true for HTTPS
                 httpOnly: true,
-                signed: true
+                signed: true,
+                sameSite: 'lax'
             });
 
             res.status(200).json({ message: "Logged in successfully" });
