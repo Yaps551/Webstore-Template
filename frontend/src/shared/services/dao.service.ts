@@ -24,4 +24,12 @@ export class Dao {
 
         return this.httpC.post<any>(this.dbAddress + urlPath, body, { headers: headers, withCredentials: true });
     }
+
+    sendPutRequest(urlPath: string, body: unknown): Observable<any> {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+
+        return this.httpC.put<any>(this.dbAddress + urlPath, body, { headers: headers, withCredentials: true });
+    }
 }

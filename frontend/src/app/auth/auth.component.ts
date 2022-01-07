@@ -57,7 +57,7 @@ export class AuthComponent {
 
     //TODO REMOVE
     onQuickLogin() {
-        this.authDao.login("test@test.com", "12345")
+        this.authDao.login("admin@test.com", "12345")
         .subscribe({
             next: response => {
                 localStorage.setItem("LoggedIn", JSON.stringify(true));
