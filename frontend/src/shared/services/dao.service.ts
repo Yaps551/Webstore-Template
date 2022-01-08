@@ -32,4 +32,12 @@ export class Dao {
 
         return this.httpC.put<any>(this.dbAddress + urlPath, body, { headers: headers, withCredentials: true });
     }
+
+    sendDeleteRequest(urlPath: string): Observable<any> {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+
+        return this.httpC.delete<any>(this.dbAddress + urlPath);
+    }
 }

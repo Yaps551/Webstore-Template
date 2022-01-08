@@ -34,11 +34,13 @@ exports.postProduct = (req, res, next) => {
     const name = req.body.name;
     const description = req.body.description;
     const imageUrl = req.body.imageUrl;
+    const price = req.body.price;
 
     Product.create({
         name: name,
         description: description,
-        imageUrl: imageUrl
+        imageUrl: imageUrl,
+        price: price ? price : null
     })
     .then(() => {
         res.status(201).json({
@@ -55,6 +57,7 @@ exports.putProduct = (req, res, next) => {
     const name = req.body.name;
     const description = req.body.description;
     const imageUrl = req.body.imageUrl;
+    const price = req.body.price;
 
     Product.findByPk(prodId)
     .then(product => {
@@ -63,6 +66,7 @@ exports.putProduct = (req, res, next) => {
         product.name = name ? name : product.name;
         product.description = description ? description : product.description;
         product.imageUrl = imageUrl ? imageUrl : product.imageUrl;
+        product.price = price ? price : product.price;
 
         return product.save()
     })
@@ -70,6 +74,21 @@ exports.putProduct = (req, res, next) => {
         res.status(200).json({
             message: 'Product updated successfully'
         });
+    })
+    .catch(err => console.log(err));
+}
+
+exports.deleteProduct = (req, res, next) => {
+    const prodId = req.params.productId;
+
+    Product.findByPk(prodId)
+    .then(product => {
+        return product.destroy();
+    })
+    .then(() => {
+        res.status(200).json({
+            message: 'Product deleted successfully'
+        })
     })
     .catch(err => console.log(err));
 }

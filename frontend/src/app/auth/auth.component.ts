@@ -44,7 +44,6 @@ export class AuthComponent {
         this.authDao.login(userInfo.email, userInfo.password)
         .subscribe({
             next: response => {
-                localStorage.setItem("LoggedIn", JSON.stringify(true));
                 this.userService.updateLoginStatus();
 
                 this.notificationMessage = response.message;
@@ -60,7 +59,6 @@ export class AuthComponent {
         this.authDao.login("admin@test.com", "12345")
         .subscribe({
             next: response => {
-                localStorage.setItem("LoggedIn", JSON.stringify(true));
                 this.userService.updateLoginStatus();
 
                 this.notificationMessage = response.message;

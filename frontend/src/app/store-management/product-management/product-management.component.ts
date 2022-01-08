@@ -13,6 +13,7 @@ export class ProductManagementComponent implements OnInit {
 
   notificationMessage = null;
   changesMade: boolean = false;
+  attemptingDelete: boolean = false;
 
   constructor(private productDao: productDao) { }
 
@@ -31,6 +32,7 @@ export class ProductManagementComponent implements OnInit {
       formValues.name,
       formValues.description,
       this.product.imageUrl, //FIXME include new imageUrl
+      this.product.price,
       this.product.createdAt,
       new Date(),
     );
@@ -47,5 +49,20 @@ export class ProductManagementComponent implements OnInit {
     // TODO imageUrl
 
     this.changesMade = false;
+  }
+
+  onDelete() {
+    this.attemptingDelete = true;
+  }
+
+  onConfirmDelete() {
+    this.productDao.deleteProduct(parseInt(this.product._id))
+    .subscribe(res => {
+      this.notificationMessage = res.message;
+    });
+  }
+
+  onCancelDelete() {
+    this.attemptingDelete = false;
   }
 }

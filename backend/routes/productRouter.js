@@ -17,4 +17,7 @@ router.post('/create', authenticateToken, productController.postProduct);
 // PUT /product/update
 router.put('/update', authenticateToken, productController.putProduct);
 
+// DELETE /product/:productId
+router.delete('/:productId', productController.deleteProduct);
+
 module.exports = router;

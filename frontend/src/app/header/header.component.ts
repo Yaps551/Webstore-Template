@@ -36,7 +36,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authDao.logout()
     .subscribe({
       next: response => {
-        localStorage.removeItem("LoggedIn");
         this.userService.updateLoginStatus();
         
         this.router.navigate(['/']);

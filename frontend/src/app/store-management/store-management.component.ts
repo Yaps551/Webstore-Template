@@ -27,4 +27,8 @@ export class StoreManagementComponent implements OnInit {
       error: err => this.errorMessage = err.statusText
     });
   }
+
+  RemoveProduct(product: Product) {
+    this.products.splice(this.products.indexOf(product), 1);
+  }
 }

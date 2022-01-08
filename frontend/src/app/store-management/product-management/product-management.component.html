@@ -11,9 +11,12 @@
         </div>
     </div>
     <div class="buttons">
-        <button [disabled]="!changesMade" (click)="onSaveChanges(productForm)">Save changes</button>
-        <button [disabled]="!changesMade" (click)="onDiscardChanges(productForm)">Discard changes</button>
-        <button>Delete product</button>
+        <button *ngIf="!attemptingDelete" [disabled]="!changesMade" (click)="onSaveChanges(productForm)">Save changes</button>
+        <button *ngIf="!attemptingDelete" [disabled]="!changesMade" (click)="onDiscardChanges(productForm)">Discard changes</button>
+        <button *ngIf="!attemptingDelete" [disabled]="changesMade" (click)="onDelete()">Delete product</button>
+
+        <button *ngIf="attemptingDelete" (click)="onConfirmDelete()">Confirm deletion</button>
+        <button *ngIf="attemptingDelete" (click)="onCancelDelete()">Cancel deletion</button>
     </div>
 </form>
 

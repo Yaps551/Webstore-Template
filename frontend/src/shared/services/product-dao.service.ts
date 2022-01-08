@@ -24,4 +24,8 @@ export class productDao {
     putProduct(product: Product): Observable<any> {
         return this.dao.sendPutRequest('product/update', product);
     }
+
+    deleteProduct(productId: number): Observable<any> {
+        return this.dao.sendDeleteRequest('product/' + productId);
+    }
 }

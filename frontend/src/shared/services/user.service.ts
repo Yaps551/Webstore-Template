@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
+import { CookieService } from './cookie.service'
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
     isLoggedIn = new BehaviorSubject<boolean>(false);
 
+    constructor(private cookieService: CookieService) {}
+
     updateLoginStatus(): void {
-        const isLoggedIn = JSON.parse(localStorage.getItem("LoggedIn"));
+        const isLoggedIn = this.cookieService.findCookie("IsLoggedIn");
 
         this.isLoggedIn.next(isLoggedIn || false);
     }

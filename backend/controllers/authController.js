@@ -41,6 +41,11 @@ exports.postLogin = (req, res, next) => {
                 signed: true,
                 sameSite: 'lax'
             });
+            res.cookie("IsLoggedIn", true, {
+                secure: false,
+                signed: true,
+                sameSite: 'lax'
+            });
 
             res.status(200).json({ message: "Logged in successfully" });
         });
@@ -52,9 +57,11 @@ exports.postLogin = (req, res, next) => {
 
 exports.postLogout = (req, res, next) => {
     const token = req.signedCookies.Token;
+    const loggedIn = req.cookies.IsLoggedIn;
 
-    if (token) {
+    if (token || loggedIn) {
         res.clearCookie("Token");
+        res.clearCookie("IsLoggedIn");
 
         return res.status(200).json({ message: "Logged out successfully" });
     } else {
