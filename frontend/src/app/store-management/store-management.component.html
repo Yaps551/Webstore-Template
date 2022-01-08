@@ -1,9 +1,33 @@
 <div class="management-wrapper">
     <div class="products">
         <h1>Manage products</h1>
-        <app-product-management *ngFor="let product of products" [product]="product"></app-product-management>
+        <app-product-management *ngFor="let product of products" [product]="product" (productDeleted)="productDeleted($event)"></app-product-management>
     </div>
     <div class="add-product">
         <h1>Add new product</h1>
+        <form class="product-fields" #newProductForm="ngForm">
+            <div class="field">
+                <label for="name">Product name</label>
+                <input type="text" id="name" name="name" maxlength="23" ngModel required>
+            </div>
+            <div class="field">
+                <label for="description">Product description</label>
+                <textarea name="" id="" cols="30" rows="10" id="description" name="description" maxlength="250" ngModel required></textarea>
+            </div>
+            <div class="field">
+                <label for="price">Product price</label>
+                <input type="number" id="price" name="price" ngModel required>
+            </div>
+            <div class="field">
+                <label for="imageUrl">Product image URL</label>
+                <input type="text" id="imageUrl" name="imageUrl" ngModel>
+            </div>
+            <div class="field">
+                <label for="imagePreview">Product image preview</label>
+                <div class="preview-image">
+                    <img [src]="newProductForm.value.imageUrl" alt="No image found">
+                </div>
+            </div>
+        </form>
     </div>    
 </div>

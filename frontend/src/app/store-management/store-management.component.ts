@@ -14,10 +14,10 @@ export class StoreManagementComponent implements OnInit {
   constructor(private productDao: productDao) { }
 
   ngOnInit(): void {
-    this.GetProducts();
+    this.getProducts();
   }
 
-  GetProducts() {
+  getProducts() {
     this.productDao.getProducts()
     .subscribe({
       next: products => {
@@ -28,7 +28,7 @@ export class StoreManagementComponent implements OnInit {
     });
   }
 
-  RemoveProduct(product: Product) {
+  productDeleted(product: Product) {
     this.products.splice(this.products.indexOf(product), 1);
   }
 }

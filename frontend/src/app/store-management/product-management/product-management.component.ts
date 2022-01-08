@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Product } from 'src/shared/models/product.model';
 import { productDao } from 'src/shared/services/product-dao.service';
@@ -10,6 +10,7 @@ import { productDao } from 'src/shared/services/product-dao.service';
 })
 export class ProductManagementComponent implements OnInit {
   @Input() product: Product;
+  @Output() productDeleted = new EventEmitter<Product>();
 
   notificationMessage = null;
   changesMade: boolean = false;
@@ -38,8 +39,12 @@ export class ProductManagementComponent implements OnInit {
     );
     
     this.productDao.putProduct(updatedProduct)
-    .subscribe(res => {
-      this.notificationMessage = res.message;
+    .subscribe( {
+      next: res => {
+        this.notificationMessage = res.message;
+        this.changesMade = false;
+      },
+      error: err => this.notificationMessage = err.message
     });
   }
 
@@ -47,6 +52,7 @@ export class ProductManagementComponent implements OnInit {
     form.controls['name'].setValue(this.product.name);
     form.controls['description'].setValue(this.product.description);
     // TODO imageUrl
+    // TODO price
 
     this.changesMade = false;
   }
@@ -57,8 +63,12 @@ export class ProductManagementComponent implements OnInit {
 
   onConfirmDelete() {
     this.productDao.deleteProduct(parseInt(this.product._id))
-    .subscribe(res => {
-      this.notificationMessage = res.message;
+    .subscribe({
+      next: res => {
+        this.notificationMessage = res.message;
+        this.productDeleted.emit(this.product);
+      },
+      error: err => this.notificationMessage = err.message
     });
   }
 

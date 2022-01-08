@@ -1,3 +1,9 @@
+@import '../../utilities/index.scss';
+
+h1 {
+    margin-bottom: 3%;
+}
+
 .management-wrapper {
     display: flex;
     flex-direction: row;
@@ -9,8 +15,38 @@
     height: 100%;
     width: 50%;
     overflow: auto;
+}
 
-    h1 {
-        margin-bottom: 3%;
+.add-product {
+    overflow: auto;
+}
+
+.product-fields {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    input, textarea {
+        background-color: rgba($color: $secondary-color, $alpha: 0.1);
+        border: 1px solid $primary-color;
+    }
+}
+
+.preview-image {
+    align-self: center;
+    height: 50%;
+    width: 50%;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        margin-top: 10%;
     }
 }
