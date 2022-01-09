@@ -94,6 +94,9 @@ exports.postSignup = (req, res, next) => {
 
             return user.save()
         })
+        .then(user => {
+            user.createCart();
+        })
         .then(() => {
             res.status(201).json({
                 message: 'Signed up succesfully'
@@ -106,5 +109,5 @@ exports.postSignup = (req, res, next) => {
 };
 
 exports.getRole = (req,res, next) => {
-    return res.json({ role: req.role });
+    return res.json({ role: req.user.role });
 }

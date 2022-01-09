@@ -9,7 +9,7 @@ exports.authenticateToken = (req, res, next) => {
     jwt.verify(token, process.env.ACCESS_TOKEN_KEY, (err, user) => {
         if (err) return res.status(403).json({ message: 'Access token invalid' });
 
-        req.role = user.userInfo.role;
+        req.user = user.userInfo;
         
         next();
     });
@@ -17,7 +17,7 @@ exports.authenticateToken = (req, res, next) => {
 
 exports.isAdmin = (req, res, next) => {
     
-    const role = req.role;
+    const role = req.user.role;
 
     if (!role) return res.status(401).json({ message: 'User has no role' });
 

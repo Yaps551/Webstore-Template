@@ -56,7 +56,7 @@ Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
 
 sequelize
-.sync()
+.sync({force: true})
 .then(() => {
     return User.findOne({ where: {
         role: 'Admin'
@@ -66,7 +66,7 @@ sequelize
     if (!user) {
         return bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 12)
         .then(hashedPassword => {
-            User.create({
+            return User.create({
                 email: process.env.DEFAULT_ADMIN_EMAIL,
                 password: hashedPassword,
                 role: 'Admin'
@@ -75,6 +75,15 @@ sequelize
     }
 
     return user;
+})
+.then(user => {
+    if (Cart.findOne({ where: {
+        userId: user.dataValues._id
+    }}).then(() => {
+        return user.createCart()
+    }))
+
+    return;
 })
 .then(() => {
     app.listen(port, () => {
