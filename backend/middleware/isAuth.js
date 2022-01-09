@@ -8,6 +8,8 @@ exports.authenticateToken = (req, res, next) => {
 
     jwt.verify(token, process.env.ACCESS_TOKEN_KEY, (err, user) => {
         if (err) return res.status(403).json({ message: 'Access token invalid' });
+
+        req.role = user.userInfo.role;
         
         next();
     });
@@ -15,15 +17,11 @@ exports.authenticateToken = (req, res, next) => {
 
 exports.isAdmin = (req, res, next) => {
     
-    const token = req.signedCookies.Token;
+    const role = req.role;
 
-    jwt.verify(token, process.env.ACCESS_TOKEN_KEY, (err, user) => {
-        if (err) return res.status(403).json({ message: 'Access token invalid' });
-        
-        const role = user.userInfo.role;
+    if (!role) return res.status(401).json({ message: 'User has no role' });
 
-        if (role != 'Admin') return res.status(403).json({ message: 'Inaccessible without sufficient privileges'});
-        
-        next();
-    });
+    if (!(role == "Admin")) return res.status(403).json({ message: 'User does not have permission' });
+
+    next();
 }
