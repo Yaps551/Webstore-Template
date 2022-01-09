@@ -26,3 +26,8 @@ h1, h2, p, label {
     border-radius: 25px;
     background-color: $secondary-color;
 }
+
+input, textarea, select {
+    background-color: rgba($color: $secondary-color, $alpha: 0.1);
+    border: 1px solid $primary-color;
+}

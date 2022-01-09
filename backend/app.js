@@ -52,11 +52,12 @@ app.use('/cart', cartRouter);
 
 // Model associations
 User.hasOne(Cart);
+Cart.belongsTo(User);
 Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
 
 sequelize
-.sync({force: true})
+.sync()
 .then(() => {
     return User.findOne({ where: {
         role: 'Admin'
@@ -77,13 +78,14 @@ sequelize
     return user;
 })
 .then(user => {
-    if (Cart.findOne({ where: {
+    Cart.findOne({ where: {
         userId: user.dataValues._id
-    }}).then(() => {
-        return user.createCart()
-    }))
+    }})
+    .then(cart => {
+        if (!cart) return user.createCart();
 
-    return;
+        return;
+    })
 })
 .then(() => {
     app.listen(port, () => {

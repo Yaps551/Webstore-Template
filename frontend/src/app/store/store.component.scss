@@ -11,8 +11,10 @@
     height: 100%;
 
     app-options-panel {
-        flex: 0 1 20%;
+        flex: 0 1 5%;
         padding-right: 2%;
+        border-right: 1px solid $primary-color;
+        box-shadow: 1px 0px 0px 0px rgba($color: $primary-color, $alpha: 0.35);
     }
 
     app-products-list {

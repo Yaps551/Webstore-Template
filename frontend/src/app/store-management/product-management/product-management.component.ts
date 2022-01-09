@@ -33,7 +33,7 @@ export class ProductManagementComponent implements OnInit {
       formValues.name,
       formValues.description,
       this.product.imageUrl, //FIXME include new imageUrl
-      this.product.price,
+      formValues.price,
       this.product.createdAt,
       new Date(),
     );

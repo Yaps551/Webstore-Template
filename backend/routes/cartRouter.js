@@ -7,4 +7,7 @@ const { authenticateToken } = require('../middleware/isAuth');
 // GET /cart/myCart
 router.get('/myCart', authenticateToken, cartController.getCart);
 
+// POST /cart/item
+router.post('/item', authenticateToken, cartController.postCart);
+
 module.exports = router;
