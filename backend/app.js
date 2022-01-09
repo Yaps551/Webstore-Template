@@ -1,4 +1,5 @@
 const dotenv = require('dotenv').config();
+const bcrypt = require('bcryptjs');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -7,10 +8,13 @@ const cors = require('cors');
 
 const productRouter = require('./routes/productRouter');
 const authRouter = require('./routes/authRouter');
+const cartRouter = require('./routes/cartRouter');
 
 const sequelize = require('./util/database');
-const product = require('./models/product'); // Import solely to execute
-const user = require('./models/user'); // Import solely to execute
+const Product = require('./models/product');
+const User = require('./models/user');
+const Cart = require('./models/cart');
+const CartItem = require('./models/cart-item');
 
 const app = express();
 
@@ -44,10 +48,35 @@ app.get('/', (req, res, next) => {
 // Routes
 app.use('/product', productRouter);
 app.use('/auth', authRouter);
+app.use('/cart', cartRouter);
+
+// Model associations
+User.hasOne(Cart);
+Cart.belongsToMany(Product, { through: CartItem });
+Product.belongsToMany(Cart, { through: CartItem });
 
 sequelize
 .sync()
-.then(result => {
+.then(() => {
+    return User.findOne({ where: {
+        role: 'Admin'
+    }});
+})
+.then(user => {
+    if (!user) {
+        return bcrypt.hash(process.env.DEFAULT_ADMIN_PASSWORD, 12)
+        .then(hashedPassword => {
+            User.create({
+                email: process.env.DEFAULT_ADMIN_EMAIL,
+                password: hashedPassword,
+                role: 'Admin'
+            });
+        })
+    }
+
+    return user;
+})
+.then(() => {
     app.listen(port, () => {
         console.log(`API server running on port: ${port}`);
     });
