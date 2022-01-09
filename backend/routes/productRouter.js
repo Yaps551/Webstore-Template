@@ -12,12 +12,12 @@ router.get('/products', productController.getProducts);
 router.get('/:productId', productController.getProduct);
 
 // POST /product/create
-router.post('/create', authenticateToken, isAdmin, productController.postProduct);
+router.post('/create', isAdmin, productController.postProduct);
 
 // PUT /product/update
-router.put('/update', authenticateToken, isAdmin, productController.putProduct);
+router.put('/update', isAdmin, productController.putProduct);
 
 // DELETE /product/:productId
-router.delete('/:productId', authenticateToken, isAdmin, productController.deleteProduct);
+router.delete('/:productId', isAdmin, productController.deleteProduct);
 
 module.exports = router;

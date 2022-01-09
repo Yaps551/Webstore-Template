@@ -38,6 +38,6 @@ export class Dao {
             'Content-Type': 'application/json'
         });
 
-        return this.httpC.delete<any>(this.dbAddress + urlPath);
+        return this.httpC.delete<any>(this.dbAddress + urlPath, { headers: headers, withCredentials: true });
     }
 }

@@ -7,6 +7,10 @@ import { Dao } from "./dao.service";
 export class productDao {
 
     constructor(private dao: Dao) {}
+
+    createProduct(body: object): Observable<any> {
+        return this.dao.sendPostRequest('product/create', body);
+    }
     
     getProducts(): Observable<any[]> {
         return this.dao.sendGetRequest('product/products')
@@ -18,7 +22,12 @@ export class productDao {
     }
 
     getProduct(productId: number): Observable<any> {
-        return this.dao.sendGetRequest('product/' + productId);
+        return this.dao.sendGetRequest('product/' + productId)
+        .pipe(
+            map(res => {
+                return res.product;
+            })
+        );
     }
 
     putProduct(product: Product): Observable<any> {
