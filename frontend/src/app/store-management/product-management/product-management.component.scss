@@ -32,6 +32,11 @@
 .product-details {
     width: 70%;
     margin: 2% 0;
+
+    .description {
+        width: 80%;
+        word-break: break-all;
+    }
 }
 
 .buttons {

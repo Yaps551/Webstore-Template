@@ -32,5 +32,6 @@
                 <button type="button" (click)="onCreateProduct(newProductForm)" [disabled]="!newProductForm.valid">Product aanmaken</button>
             </div>
         </form>
+        <p *ngIf="notificationMessage">{{ notificationMessage }}</p>
     </div>    
 </div>

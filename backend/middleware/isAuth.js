@@ -14,6 +14,7 @@ exports.authenticateToken = (req, res, next) => {
 }
 
 exports.isAdmin = (req, res, next) => {
+    
     const token = req.signedCookies.Token;
 
     jwt.verify(token, process.env.ACCESS_TOKEN_KEY, (err, user) => {

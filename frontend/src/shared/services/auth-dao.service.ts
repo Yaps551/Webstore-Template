@@ -21,4 +21,8 @@ export class authDao {
     logout() {
         return this.dao.sendGetRequest('auth/logout');
     }
+
+    getRole() {
+        return this.dao.sendGetRequest('auth/role');
+    }
 }

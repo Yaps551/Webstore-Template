@@ -10,7 +10,7 @@ import { Product } from '../../shared/models/product.model';
 })
 export class StoreManagementComponent implements OnInit {
   products: Product[] = [];
-  errorMessage: string = null;
+  notificationMessage: string = null;
 
   constructor(private productDao: productDao) { }
 
@@ -23,14 +23,15 @@ export class StoreManagementComponent implements OnInit {
     .subscribe({
       next: products => {
         this.products = products;
-        this.errorMessage = null;
+        this.notificationMessage = null;
       },
-      error: err => this.errorMessage = err.statusText
+      error: err => this.notificationMessage = err.statusText
     });
   }
 
   productDeleted(product: Product) {
     this.products.splice(this.products.indexOf(product), 1);
+    this.notificationMessage = "Product deleted successfully";
   }
 
   onCreateProduct(productForm: NgForm) {
@@ -44,9 +45,14 @@ export class StoreManagementComponent implements OnInit {
     }
 
     this.productDao.createProduct(newProduct)
-    .subscribe(res => {
-      this.products.push(res.product);
-      productForm.reset();
-    })
+    .subscribe({
+      next: res => {
+        this.products.push(res.product);
+        productForm.reset();
+        this.notificationMessage = res.message
+      },
+      error: err => this.notificationMessage = err.message
+    }
+    )
   }
 }

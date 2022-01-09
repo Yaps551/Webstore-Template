@@ -51,8 +51,8 @@ export class ProductManagementComponent implements OnInit {
   onDiscardChanges(form: NgForm): void {
     form.controls['name'].setValue(this.product.name);
     form.controls['description'].setValue(this.product.description);
-    // TODO imageUrl
-    // TODO price
+    // form.controls['imageUrl'].setValue(this.product.imageUrl);
+    form.controls['price'].setValue(this.product.price);
 
     this.changesMade = false;
   }
@@ -65,7 +65,6 @@ export class ProductManagementComponent implements OnInit {
     this.productDao.deleteProduct(parseInt(this.product._id))
     .subscribe({
       next: res => {
-        this.notificationMessage = res.message;
         this.productDeleted.emit(this.product);
       },
       error: err => this.notificationMessage = err.message

@@ -9,6 +9,12 @@
         <div class="description">
             <input type="text" (change)="onChanges()" ngModel="{{ product.description }}" name="description" maxlength="250">
         </div>
+        <div class="price">
+            <input type="number" (change)="onChanges()" ngModel="{{ product.price }}" name="price">
+        </div>
+        <!-- <div class="imageUrl">
+            <input type="text" (change)="onChanges()" ngModel="{{ product.imageUrl }}" name="imageUrl">
+        </div> -->
     </div>
     <div class="buttons">
         <button type="button" *ngIf="!attemptingDelete" [disabled]="!changesMade" (click)="onSaveChanges(productForm)">Save changes</button>
