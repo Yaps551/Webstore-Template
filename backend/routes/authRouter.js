@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const authController = require('../controllers/authController');
+const { authenticateToken } = require('../middleware/isAuth');
 
 // POST /auth/login
 router.post('/login', authController.postLogin);
@@ -14,6 +15,6 @@ router.get('/logout', authController.postLogout);
 router.post('/signup', authController.postSignup);
 
 // GET /auth/role
-router.get('/role', authController.getRole);
+router.get('/role', authenticateToken, authController.getRole);
 
 module.exports = router;

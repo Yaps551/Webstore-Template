@@ -106,13 +106,5 @@ exports.postSignup = (req, res, next) => {
 };
 
 exports.getRole = (req,res, next) => {
-    const token = req.signedCookies.Token;
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_KEY, (err, user) => {
-        if (err) return res.status(403).json({ message: 'Access token invalid' });
-        
-        const role = user.userInfo.role;
-
-        return res.json({role: role});
-    });
+    return res.json({ role: req.role });
 }
