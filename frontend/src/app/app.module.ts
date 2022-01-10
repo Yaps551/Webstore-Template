@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { StoreManagementComponent } from './store-management/store-management.component';
 import { ProductManagementComponent } from './store-management/product-management/product-management.component';
+import { CartItemComponent } from './cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ProductManagementComponent } from './store-management/product-managemen
     AuthComponent,
     StoreManagementComponent,
     ProductManagementComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,

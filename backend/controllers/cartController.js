@@ -29,6 +29,8 @@ exports.postCart = (req, res, next) => {
     .then(product => {
         if (!product) return res.status(404).json({ message: 'Product with this id does not exist' });
 
+        productToAdd = product;
+
         findCart(req)
         .then(cart => {
             userCart = cart;
@@ -54,7 +56,10 @@ exports.postCart = (req, res, next) => {
             return userCart.addProduct(product, { through: { quantity: newQuantity } });
         })
         .then(() => {
-            res.status(200).json({ message: 'Successfully added product to cart' });
+            return res.status(200).json({ message: 'Successfully added product to cart' });
+        })
+        .catch(err => {
+            return res.status(500).json({ message: err.message });
         })
     })
     .catch(err =>  {
@@ -89,7 +94,7 @@ exports.putCart = (req, res, next) => {
 }
 
 exports.deleteCartItem = (req, res, next) => {
-    const itemId = req.body.itemId;
+    const itemId = req.params.itemId
 
     CartItem.findByPk(itemId)
     .then(item => {

@@ -14,6 +14,6 @@ router.post('/item', authenticateToken, cartController.postCart);
 router.put('/update', authenticateToken, cartController.putCart);
 
 // DELETE /cart/delete
-router.delete('/delete', authenticateToken, cartController.deleteCartItem);
+router.delete('/delete/:itemId', authenticateToken, cartController.deleteCartItem);
 
 module.exports = router;
