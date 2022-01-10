@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/shared/models/product.model';
-import { productDao } from 'src/shared/services/product-dao.service';
+import { CartItem } from 'src/shared/models/cart-item.model';
+import { CartDao } from 'src/shared/services/cart-dao.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,20 +8,20 @@ import { productDao } from 'src/shared/services/product-dao.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  products: Product[];
+  items: CartItem[];
   notificationMessage: string = null;
 
-  constructor(private productDao: productDao) { }
+  constructor(private cartDao: CartDao) { }
 
   ngOnInit(): void {
     this.getProducts();
   }
 
   getProducts() {
-    this.productDao.getProducts()
+    this.cartDao.getCart()
     .subscribe({
-      next: products => {
-        this.products = products;
+      next: items => {
+        this.items = items;
       },
       error: err => this.notificationMessage = err.statusText
     });
