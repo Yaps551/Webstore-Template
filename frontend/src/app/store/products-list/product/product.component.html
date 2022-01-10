@@ -9,7 +9,7 @@
             <p class="product-description">{{ product.description }}</p>
             <div class="options">
                 <p class="product-price">€{{ product.price }}</p>
-                <button>Add to cart</button>
+                <button type="button" (click)="onAddToCart()">Add to cart</button>
             </div>
         </div>
     </div>
