@@ -1,1 +1,1 @@
-<app-cart-item *ngFor="let item of items" [item]="item"></app-cart-item>
+<app-cart-item *ngFor="let item of items" [item]="item" (itemDeleted)="itemDeleted($event)"></app-cart-item>

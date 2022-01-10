@@ -1,4 +1,4 @@
-<form class="product-wrapper" #productForm="ngForm">
+<form class="product-wrapper" #itemForm="ngForm">
     <div class="product-image">
         <img [src]="item.imageUrl" alt="no image found">
     </div>
@@ -7,13 +7,11 @@
             <h2>{{ item.name }}</h2>
         </div>
         <div class="quantity">
-            <p>Quantity: {{ item.cartItem.quantity }}</p>
+            <label for="quantity">Quantity: </label>
+            <input type="number" min="0" max="10" id="quantity" ngModel="{{ item.cartItem.quantity }}" name="quantity" (change)="onChangeQuantity(itemForm)">
         </div>
         <div class="price">
-            <p>Total cost: €{{ item.price * item.cartItem.quantity }}</p>
+            <p>Total cost: €{{ totalPrice }}</p>
         </div>
-    </div>
-    <div class="buttons">
-
     </div>
 </form>

@@ -26,6 +26,6 @@ export class CartDao {
     }
 
     deleteProduct(itemId: number): Observable<any> {
-        return this.dao.sendDeleteRequest('cart/' + itemId);
+        return this.dao.sendDeleteRequest('cart/delete/' + itemId);
     }
 }

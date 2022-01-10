@@ -6,6 +6,7 @@ export class CartItem {
     price: number;
 
     cartItem: {
+        _id: number;
         quantity: number;
     }
 }

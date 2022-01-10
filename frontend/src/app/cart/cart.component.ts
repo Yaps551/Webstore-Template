@@ -27,4 +27,8 @@ export class CartComponent implements OnInit {
     });
   }
 
+  itemDeleted(item: CartItem) {
+    this.items.splice(this.items.indexOf(item), 1);
+  }
+
 }

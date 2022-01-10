@@ -27,7 +27,7 @@ h1, h2, p, label {
     background-color: $secondary-color;
 }
 
-input, textarea, select {
+input, textarea, select, button {
     background-color: rgba($color: $secondary-color, $alpha: 0.1);
     border: 1px solid $primary-color;
 }
