@@ -53,7 +53,7 @@ exports.postCart = (req, res, next) => {
         .then(product => {
             return userCart.addProduct(product, { through: { quantity: newQuantity } });
         })
-        .then(result => {
+        .then(() => {
             res.status(200).json({ message: 'Successfully added product to cart' });
         })
     })
@@ -79,12 +79,27 @@ exports.putCart = (req, res, next) => {
 
             return res.status(200).json({ message: 'Updated cart item successfully' });
         })
-        .catch(err => {
+        .catch(() => {
             return res.status(404).json({ message: 'Could not fetch user cart' });
         })
     })
-    .catch(err => {
+    .catch(() => {
         return res.status(500).json({ message: error.message});
+    })
+}
+
+exports.deleteCartItem = (req, res, next) => {
+    const itemId = req.body.itemId;
+
+    CartItem.findByPk(itemId)
+    .then(item => {
+        return item.destroy();
+    })
+    .then(() => {
+        res.status(200).json({ message: 'Product deleted successfully' });
+    })
+    .catch(err => {
+        res.status(500).json({ message: 'Could not delete product' });
     })
 }
 

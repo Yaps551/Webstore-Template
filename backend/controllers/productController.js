@@ -6,7 +6,7 @@ exports.getProducts = (req, res, next) => {
         res.status(200).json({message: 'Fetched products successfully', products: products});
     })
     .catch(err => {
-        console.log(err);
+        res.status(500).json({ message: err.message });
     });
 };
 
@@ -51,7 +51,7 @@ exports.postProduct = (req, res, next) => {
         });
     })
     .catch(err => {
-        console.log(err);
+        res.status(500).json({ message: err.message });
     });
 }
 
@@ -78,7 +78,9 @@ exports.putProduct = (req, res, next) => {
             message: 'Product updated successfully'
         });
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+        res.status(500).json({ message: err.message });
+    });
 }
 
 exports.deleteProduct = (req, res, next) => {
@@ -93,5 +95,7 @@ exports.deleteProduct = (req, res, next) => {
             message: 'Product deleted successfully'
         })
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+        res.status(500).json({ message: err.message });
+    });
 }

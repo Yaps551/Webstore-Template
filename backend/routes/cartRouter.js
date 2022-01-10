@@ -10,7 +10,10 @@ router.get('/myCart', authenticateToken, cartController.getCart);
 // POST /cart/item
 router.post('/item', authenticateToken, cartController.postCart);
 
-// POST /cart/update
+// PUT /cart/update
 router.put('/update', authenticateToken, cartController.putCart);
+
+// DELETE /cart/delete
+router.delete('/delete', authenticateToken, cartController.deleteCartItem);
 
 module.exports = router;
