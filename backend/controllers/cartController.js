@@ -19,40 +19,48 @@ exports.getCart = (req, res, next) => {
 
 exports.postCart = (req, res, next) => {
     const prodId = req.body.productId;
+    let productToAdd;
     let userCart;
+    let newQuantity = 1;
 
-    findCart(req)
-    .then(cart => {
-        userCart = cart;
+    // Check if product exists
+    Product.findByPk(prodId)
+    .then(product => {
+        if (!product) {
+            return res.status(404).json({ message: 'Product with this id does not exist' });
+        }
 
-        return cart.getProducts({ where: {
-            id: prodId
-        }})
+        findCart(req)
+        .then(cart => {
+            userCart = cart;
+    
+            return cart.getProducts({ where: { _id: prodId } });
+        })
         .then(products => {
+            let product;
             if (products.length > 0) {
-                const product = products[0];
+                product = products[0];
             }
-
-            let newQuantity = 1;
+            
+            // Increment quantity if product already exists as cart item
             if (product) {
-                // Increment quantity
+                const oldQuantity = product.cartItem.quantity;
+                newQuantity = oldQuantity + 1;
+    
+                return product;
             }
-
-            return Product.findByPk(prodId)
-            .then(product => {
-                return userCart.addProduct(product, { through: { newQuantity} });
-            })
-            .catch(err => {
-                return res.status(404).json({ message: "Could not find product", error: err.message});
-            })
+            return productToAdd;
         })
-        .catch(err => {
-            return res.status(404).json({ message: "Could not fetch cart products"});
+        .then(product => {
+            return userCart.addProduct(product, { through: { quantity: newQuantity } });
+        })
+        .then(result => {
+            res.status(200).json({ message: 'Successfully added product to cart' });
         })
     })
-    .catch(err => {
-        return res.status(404).json({ message: "Could not fetch user cart" });
-    })
+    .catch(err =>  {
+        return res.status(404).json({ message: err.message });
+    });
 }
 
 findCart = async (req) => {
