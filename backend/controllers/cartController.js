@@ -1,5 +1,6 @@
 const Cart = require("../models/cart");
 const Product = require("../models/product");
+const CartItem = require('../models/cart-item');
 
 exports.getCart = (req, res, next) => {
     findCart(req)
@@ -26,9 +27,7 @@ exports.postCart = (req, res, next) => {
     // Check if product exists
     Product.findByPk(prodId)
     .then(product => {
-        if (!product) {
-            return res.status(404).json({ message: 'Product with this id does not exist' });
-        }
+        if (!product) return res.status(404).json({ message: 'Product with this id does not exist' });
 
         findCart(req)
         .then(cart => {
@@ -59,8 +58,34 @@ exports.postCart = (req, res, next) => {
         })
     })
     .catch(err =>  {
-        return res.status(404).json({ message: err.message });
+        return res.status(500).json({ message: err.message });
     });
+}
+
+exports.putCart = (req, res, next) => {
+    const itemId = req.body.itemId;
+    const newQuantity = req.body.quantity;
+
+    CartItem.findByPk(itemId)
+    .then(item => {
+        if (!item) return res.status(404).json({ message: 'Could not find cart item'});
+
+        // Ensure the user's cart is being updated
+        findCart(req)
+        .then(() => {
+            item.quantity = newQuantity;
+
+            item.save();
+
+            return res.status(200).json({ message: 'Updated cart item successfully' });
+        })
+        .catch(err => {
+            return res.status(404).json({ message: 'Could not fetch user cart' });
+        })
+    })
+    .catch(err => {
+        return res.status(500).json({ message: error.message});
+    })
 }
 
 findCart = async (req) => {
