@@ -9,12 +9,12 @@ export class AuthGuard implements CanActivate {
     constructor(private router: Router, private userService: UserService) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Promise<boolean> | Observable<boolean | UrlTree> {
-        return this.userService.isLoggedIn.pipe(take(1), map(user => {
-            const isAuth = !!user;
-            if (isAuth) return true;
+        if (document.cookie && document.cookie.indexOf('IsLoggedIn') != -1) {
+            return true;
+        }
 
-            return this.router.createUrlTree(['/auth']);
-        }));
+        this.userService.updateLoginStatus();
+        return this.router.navigate(['/auth']);
     }
 
     

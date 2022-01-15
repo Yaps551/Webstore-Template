@@ -6,7 +6,9 @@ exports.getProducts = (req, res, next) => {
         res.status(200).json({message: 'Fetched products successfully', products: products});
     })
     .catch(err => {
-        res.status(500).json({ message: err.message });
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     });
 };
 
@@ -23,10 +25,9 @@ exports.getProduct = (req, res, next) => {
         res.status(200).json({message: 'Fetched product successfully', product: product});
     })
     .catch(err => {
-        if (!err.statusCode) {
-            err.statusCode = 500;
-        }
-        next(err);
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     });
 };
 
@@ -51,7 +52,9 @@ exports.postProduct = (req, res, next) => {
         });
     })
     .catch(err => {
-        res.status(500).json({ message: err.message });
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     });
 }
 
@@ -79,7 +82,9 @@ exports.putProduct = (req, res, next) => {
         });
     })
     .catch(err => {
-        res.status(500).json({ message: err.message });
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     });
 }
 
@@ -96,6 +101,8 @@ exports.deleteProduct = (req, res, next) => {
         })
     })
     .catch(err => {
-        res.status(500).json({ message: err.message });
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     });
 }

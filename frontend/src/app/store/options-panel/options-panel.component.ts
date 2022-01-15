@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-options-panel',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./options-panel.component.scss']
 })
 export class OptionsPanelComponent implements OnInit {
+  @Output() filterChanged = new EventEmitter<string>();
+  filteredStatus: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  onChanges(): void {
+    // this.filterChanged.emit(this.filteredStatus);
+  }
 }

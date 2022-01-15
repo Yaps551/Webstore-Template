@@ -18,7 +18,7 @@ exports.postLogin = (req, res, next) => {
     })
     .then(user => {
         if (!user) {
-            return res.status(401);
+            return res.status(401).json({ message: 'Invalid credentials' });
         }
 
         loadedUser = user;
@@ -39,19 +39,26 @@ exports.postLogin = (req, res, next) => {
                 secure: false, // FIXME set to true for HTTPS
                 httpOnly: true,
                 signed: true,
+                maxAge: process.env.TOKEN_EXPIRATION_TIME * 1000,
                 sameSite: 'lax'
             });
             res.cookie("IsLoggedIn", true, {
                 secure: false,
                 signed: true,
+                maxAge: process.env.TOKEN_EXPIRATION_TIME * 1000,
                 sameSite: 'lax'
             });
 
-            res.status(200).json({ message: "Logged in successfully" });
+            return res.status(200).json({ message: "Logged in successfully" });
+        })
+        .catch(err => {
+            return res.status(401).json({ message: 'Invalid credentials' });
         });
     })
     .catch(err => {
-        return res.status(500);
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     })
 };
 
@@ -104,7 +111,9 @@ exports.postSignup = (req, res, next) => {
         });
     })
     .catch(err => {
-        console.log(err);
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        next(error);
     });
 };
 

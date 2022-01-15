@@ -32,10 +32,10 @@ export class AuthComponent {
 
         this.authDao.signup(userInfo.email, userInfo.password)
         .subscribe({
-            next: response => this.notificationMessage = response.message, //TODO handle response types
-            error: err => console.log(err),
+            next: response => this.notificationMessage = response.message,
+            error: err => this.notificationMessage = err.error.message,
             complete: () => form.reset()
-        });
+        })
     }
 
     performLogin(form: NgForm) {
@@ -47,9 +47,8 @@ export class AuthComponent {
                 this.userService.updateLoginStatus();
 
                 this.notificationMessage = response.message;
-                //TODO handle response types
             },
-            error: err => console.log(err),
+            error: err => this.notificationMessage = err.error.message,
             complete: () => form.reset()
         });
     }

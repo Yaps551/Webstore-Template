@@ -50,6 +50,11 @@ app.use('/product', productRouter);
 app.use('/auth', authRouter);
 app.use('/cart', cartRouter);
 
+// Error handling
+app.use((error, req, res, next) => {
+    return res.status(error.httpStatusCode).json({ message: error.message });
+});
+
 // Model associations
 User.hasOne(Cart);
 Cart.belongsTo(User);
@@ -93,5 +98,7 @@ sequelize
     });
 })
 .catch(err => {
-    console.log(err);
+    const error = new Error(err.message);
+    error.httpStatusCode = 500;
+    return next(error);
 });

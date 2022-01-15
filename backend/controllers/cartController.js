@@ -14,7 +14,9 @@ exports.getCart = (req, res, next) => {
         })
     })
     .catch(err => {
-        return res(404).json({ message: "Could not fetch cart" });
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     });
 }
 
@@ -63,7 +65,9 @@ exports.postCart = (req, res, next) => {
         })
     })
     .catch(err =>  {
-        return res.status(500).json({ message: err.message });
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     });
 }
 
@@ -89,7 +93,9 @@ exports.putCart = (req, res, next) => {
         })
     })
     .catch(() => {
-        return res.status(500).json({ message: error.message});
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     })
 }
 
@@ -104,7 +110,9 @@ exports.deleteCartItem = (req, res, next) => {
         res.status(200).json({ message: 'Product deleted successfully' });
     })
     .catch(err => {
-        res.status(500).json({ message: 'Could not delete product' });
+        const error = new Error('Internal server error');
+        error.httpStatusCode = 500;
+        return next(error);
     })
 }
 
