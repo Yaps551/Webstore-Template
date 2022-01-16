@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/shared/models/product.model';
 import { productDao } from 'src/shared/services/product-dao.service';
+import { UserService } from 'src/shared/services/user.service';
 
 @Component({
   selector: 'app-products-list',
@@ -10,10 +11,12 @@ import { productDao } from 'src/shared/services/product-dao.service';
 export class ProductsListComponent implements OnInit {
   products: Product[] = [];
   errorMessage: string = null;
+  isLoggedIn: boolean = false;
 
-  constructor(private productDao: productDao) { }
+  constructor(private productDao: productDao, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.userService.isLoggedIn.getValue();
     this.getProducts();
   }
 

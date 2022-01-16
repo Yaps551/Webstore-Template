@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         
         this.router.navigate(['/']);
       },
-      error: err => console.log(err)
+      error: err => this.userService.updateLoginStatus()
     });
   }
 
