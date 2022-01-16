@@ -12,9 +12,9 @@
         <div class="price">
             <input type="number" (change)="onChanges()" ngModel="{{ product.price }}" name="price">
         </div>
-        <!-- <div class="imageUrl">
+        <div class="imageUrl">
             <input type="text" (change)="onChanges()" ngModel="{{ product.imageUrl }}" name="imageUrl">
-        </div> -->
+        </div>
     </div>
     <div class="buttons">
         <button type="button" *ngIf="!attemptingDelete" [disabled]="!changesMade" (click)="onSaveChanges(productForm)">Save changes</button>
@@ -26,4 +26,8 @@
     </div>
 </form>
 
-<div class="notification" *ngIf="notificationMessage">{{ notificationMessage }}</div>
+<div class="notification" *ngIf="notificationMessage">
+    <div class="notification-message">
+        {{ notificationMessage }}
+    </div>
+</div>

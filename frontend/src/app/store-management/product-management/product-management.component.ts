@@ -32,7 +32,7 @@ export class ProductManagementComponent implements OnInit {
       this.product._id,
       formValues.name,
       formValues.description,
-      this.product.imageUrl, //FIXME include new imageUrl
+      formValues.imageUrl,
       formValues.price,
       this.product.createdAt,
       new Date(),
@@ -51,7 +51,7 @@ export class ProductManagementComponent implements OnInit {
   onDiscardChanges(form: NgForm): void {
     form.controls['name'].setValue(this.product.name);
     form.controls['description'].setValue(this.product.description);
-    // form.controls['imageUrl'].setValue(this.product.imageUrl);
+    form.controls['imageUrl'].setValue(this.product.imageUrl);
     form.controls['price'].setValue(this.product.price);
 
     this.changesMade = false;

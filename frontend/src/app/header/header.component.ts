@@ -18,6 +18,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.handleSubscriptions();
+
+    // Perform login check
+    this.userService.updateLoginStatus();
   }
 
   ngOnDestroy(): void {

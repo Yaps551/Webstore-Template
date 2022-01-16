@@ -22,14 +22,8 @@
                 <label for="imageUrl">Product image URL</label>
                 <input type="text" id="imageUrl" name="imageUrl" ngModel>
             </div>
-            <!-- <div class="field">
-                <label for="imagePreview">Product image preview</label>
-                <div class="preview-image">
-                    <img [src]="newProductForm.value.imageUrl" alt="No image found">
-                </div>
-            </div> -->
             <div class="field">
-                <button type="button" (click)="onCreateProduct(newProductForm)" [disabled]="!newProductForm.valid">Product aanmaken</button>
+                <button type="button" (click)="onCreateProduct(newProductForm)" [disabled]="!newProductForm.valid">Create Product</button>
             </div>
         </form>
         <p *ngIf="notificationMessage">{{ notificationMessage }}</p>

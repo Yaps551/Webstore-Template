@@ -47,12 +47,19 @@
     }
 }
 
+input {
+    background: none;
+}
+
 input, input:focus {
     width: 100%;
     color: $default-text-color;
     font-size: 16px;
     font-family: 'Outfit', sans-serif;
-    background: none;
     border: none;
     outline: none;
+}
+
+input:focus, textarea:focus {
+    background-color: rgba($color: $secondary-color, $alpha: 0.5);
 }
