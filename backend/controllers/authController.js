@@ -49,6 +49,15 @@ exports.postLogin = (req, res, next) => {
                 sameSite: 'lax'
             });
 
+            if (loadedUser.dataValues.role == "Admin") {
+                res.cookie("IsAdmin", true, {
+                    secure: false,
+                    signed: true,
+                    maxAge: process.env.TOKEN_EXPIRATION_TIME * 1000,
+                    sameSite: 'lax'
+                });
+            }
+
             return res.status(200).json({ message: "Logged in successfully" });
         })
         .catch(err => {
@@ -64,11 +73,13 @@ exports.postLogin = (req, res, next) => {
 
 exports.postLogout = (req, res, next) => {
     const token = req.signedCookies.Token;
-    const loggedIn = req.cookies.IsLoggedIn;
+    const loggedIn = req.signedCookies.IsLoggedIn;
+    const admin = req.signedCookies.IsAdmin;
 
-    if (token || loggedIn) {
+    if (token || loggedIn || admin) {
         res.clearCookie("Token");
         res.clearCookie("IsLoggedIn");
+        res.clearCookie("IsAdmin");
 
         return res.status(200).json({ message: "Logged out successfully" });
     } else {

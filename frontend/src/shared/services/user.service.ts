@@ -13,4 +13,10 @@ export class UserService {
 
         this.isLoggedIn.next(isLoggedIn || false);
     }
+
+    isAdmin(): boolean {
+        const isAdmin = this.cookieService.findCookie("IsAdmin");
+
+        return isAdmin;
+    }
 }
