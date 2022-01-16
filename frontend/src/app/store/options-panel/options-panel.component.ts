@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { StoreOptionsService } from 'src/shared/services/store-options.service';
 
 @Component({
   selector: 'app-options-panel',
@@ -6,16 +7,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./options-panel.component.scss']
 })
 export class OptionsPanelComponent implements OnInit {
-  @Output() filterChanged = new EventEmitter<string>();
-  filteredStatus: string = '';
+  filter: string = '';
 
-  constructor() { }
+  constructor(private storeService: StoreOptionsService) { }
 
   ngOnInit(): void {
   }
 
-
   onChanges(): void {
-    // this.filterChanged.emit(this.filteredStatus);
+    this.storeService.filter.next(this.filter);
   }
 }
