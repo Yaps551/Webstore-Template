@@ -1,22 +1,30 @@
-<form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-    <div class="input-fields">
-        <div class="input-field">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" ngModel name="email" required email autocomplete="email">
+<div class="container-wrapper">
+    <div class="container">
+        <div class="top-bar">
+            <h2>{{ isLoginMode ? 'Login' : 'Sign Up' }}</h2>
         </div>
-        <div class="input-field">
-            <label for="password">Password</label>
-            <input type="password" id="password" ngModel name="password" required minlength="5" autocomplete="current-password">
-        </div>
+            <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" class="content-container">
+                <div class="input-fields">
+                    <div class="input-field">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" ngModel name="email" required email autocomplete="email">
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" ngModel name="password" required minlength="5" autocomplete="current-password">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
+                    |
+                    <button (click)="onSwitchMode()" type="button">Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}</button>
+                </div>
+            </form>
     </div>
-    <div class="buttons">
-        <button type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
-        |
-        <button (click)="onSwitchMode()" type="button">Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}</button>
-        |
-        <button (click)="onQuickLogin()" type="button">Quick Login</button>
-    </div>
-    <div class="notification" *ngIf="notificationMessage">
+</div>
+
+<div class="notification" *ngIf="notificationMessage">
+    <div class="notification-message">
         <p>{{ notificationMessage }}</p>
     </div>
-</form>
+</div>

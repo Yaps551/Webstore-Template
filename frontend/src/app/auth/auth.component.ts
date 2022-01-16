@@ -6,7 +6,8 @@ import { UserService } from "src/shared/services/user.service";
 
 @Component({
     selector: 'app-auth',
-    templateUrl: './auth.component.html'
+    templateUrl: './auth.component.html',
+    styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
     isLoginMode: boolean = true;
@@ -46,25 +47,10 @@ export class AuthComponent {
             next: response => {
                 this.userService.updateLoginStatus();
 
-                this.notificationMessage = response.message;
+                this.router.navigate(['/store']);
             },
             error: err => this.notificationMessage = err.error.message,
             complete: () => form.reset()
-        });
-    }
-
-    //TODO REMOVE
-    onQuickLogin() {
-        this.authDao.login("admin@test.com", "12345")
-        .subscribe({
-            next: response => {
-                this.userService.updateLoginStatus();
-
-                this.notificationMessage = response.message;
-
-                // this.router.navigate(['/']);
-            },
-            error: err => console.log(err)
         });
     }
 }

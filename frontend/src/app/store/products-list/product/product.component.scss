@@ -8,7 +8,7 @@
     border-bottom: 2px solid $primary-color;
     height: 100%;
     width: 100%;
-    background-color: rgba($color: $secondary-color, $alpha: 0.1);
+    background-color: $window-background-color;
 
     box-shadow: $primary-color-box-shadow;
 }

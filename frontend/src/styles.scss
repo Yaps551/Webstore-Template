@@ -31,3 +31,17 @@ input, textarea, select, button {
     background-color: rgba($color: $secondary-color, $alpha: 0.1);
     border: 1px solid $primary-color;
 }
+
+.notification {
+    display: flex;
+    margin-top: 5%;
+    width: 100%;
+    justify-content: center;
+
+    .notification-message {
+        text-align: center;
+        width: 30%;
+        border: 1px solid $error-color;
+        font-size: 150%;
+    }
+}
