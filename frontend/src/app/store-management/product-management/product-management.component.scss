@@ -10,6 +10,13 @@
     background-color: $window-background-color;
 
     box-shadow: $primary-color-box-shadow;
+
+    @media screen and (max-width: $desktop-small) {
+        flex-grow: 1;
+        height: 40%;
+        align-items: center;
+        flex-direction: column;
+    }
 }
 
 .product-image {
@@ -23,6 +30,10 @@
         height: 100%;
         object-fit: contain;
     }
+
+    @media screen and (max-width: $desktop-small) {
+        width: 20%;
+    }
 }
 
 .product-details {
@@ -32,6 +43,10 @@
     .description {
         width: 80%;
         word-break: break-all;
+    }
+
+    @media screen and (max-width: $desktop-small) {
+        width: 95%;
     }
 }
 
@@ -44,6 +59,15 @@
 
     button {
         margin: 5%;
+
+        @media screen and (max-width: $desktop-small) {
+            padding: 0 1rem;
+        }
+    }
+
+    @media screen and (max-width: $desktop-small) {
+        flex-direction: row;
+        justify-content: center;
     }
 }
 
