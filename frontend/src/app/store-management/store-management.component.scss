@@ -13,8 +13,12 @@ h1 {
 
 .products {
     height: 100%;
-    width: 50%;
+    width: 70%;
     overflow: auto;
+
+    @media screen and (max-width: $desktop-small) {
+        width: 80%;
+    }
 }
 
 .add-product {

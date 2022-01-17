@@ -9,6 +9,24 @@
     min-width: 100%;
     background-color: $primary-color;
 
+    .title-section {
+        @media screen and (max-width: $tablet) {
+            height: 100%;
+        }
+    }
+
+    .title {
+        @media screen and (max-width: $tablet) {
+            display: flex;
+            font-size: 150%;
+            height: 100%;
+            flex-grow: 1;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
     .icon {
         display: flex;
         flex-direction: row;
@@ -54,6 +72,10 @@
         align-items: center;
         height: 100%;
         width: 85%;
+
+        @media screen and (max-width: $tablet) {
+            display: block;
+        }
     }
 
     .navigation-links {
@@ -71,12 +93,12 @@
         li {
             padding: 0 5%;
 
-            a {
-                text-decoration: none;
+            h1 {
+                font-size: 1.5rem;
+            }
 
-                h1 {
-                    font-size: 1.5rem;
-                 }
+            @media screen and (max-width: $desktop-small) {
+                display: none;
             }
         }
     }
@@ -87,5 +109,45 @@
 
     h1.active-link {
         color: $highlight-color;
+    }
+}
+
+.burg {
+    display: none;
+    width: 2rem;
+    height: 100%;
+    margin-right: 1rem;
+    background: center / contain no-repeat url('../../assets/images/hamburger2.svg');
+
+    @media screen and (max-width: $desktop-small) {
+        display: block;
+    }
+}
+
+#burger-links {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+
+    li {
+        background-color: $window-background-color;
+        border-bottom: 1px solid $primary-color;
+        font-size: 70%;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: flex;
+
+    @media screen and (min-width: $desktop-small) {
+        display: none;
     }
 }

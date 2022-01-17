@@ -68,7 +68,7 @@ app.use('/cart', cartRouter);
 
 // Error handling
 app.use((error, req, res, next) => {
-    return res.status(error.httpStatusCode).json({ message: error.message });
+    return res.status(error.httpStatusCode || 500).json({ message: error.message });
 });
 
 // Model associations
