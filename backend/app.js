@@ -2,6 +2,7 @@ const dotenv = require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -24,6 +25,9 @@ const CartItem = require('./models/cart-item');
 const app = express();
 
 const port = process.env.PORT;
+
+const privateKey = fs.readFileSync('server.key');
+const certificate = fs.readFileSync('server.cert');
 
 // Cors options
 var corsOptions = {
@@ -106,7 +110,7 @@ sequelize
     })
 })
 .then(() => {
-    app.listen(port, () => {
+    https.createServer({ key: privateKey, cert: certificate }, app).listen(port, () => {
         console.log(`API server running on port: ${port}`);
     });
 })
