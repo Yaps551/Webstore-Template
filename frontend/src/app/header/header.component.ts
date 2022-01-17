@@ -46,4 +46,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  openMenu(): void {
+    const links = document.getElementById('burger-links');
+
+    if (links.className === "visible") {
+      links.className = "invisible";
+
+      return;
+    }
+    
+    links.className = "visible";
+  }
+
 }
