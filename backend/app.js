@@ -2,6 +2,7 @@ const dotenv = require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -24,10 +25,12 @@ const CartItem = require('./models/cart-item');
 const app = express();
 
 const port = process.env.PORT;
+const privateKey = fs.readFileSync('../certificate/certificate.key');
+const certificate = fs.readFileSync('../certificate/certificate.crt');
 
 // Cors options
 var corsOptions = {
-    origin: `http://localhost:${process.env.APP_PORT}`,
+    origin: [`http://localhost:${process.env.APP_PORT}`, 'https://projectlethalforce.com'],
     methods: 'GET, POST, PUT, PATCH, DELETE',
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true
@@ -106,9 +109,12 @@ sequelize
     })
 })
 .then(() => {
-    app.listen(port, () => {
-        console.log(`API server running on port: ${port}`);
-    });
+    // app.listen(port, () => {
+    //     console.log(`API server running on port: ${port}`);
+    // });
+    https.createServer({ key: privateKey, cert: certificate }, app).listen(port, () => {
+            console.log(`API server running on port: ${port}`);
+        });
 })
 .catch(err => {
     const error = new Error(err.message);

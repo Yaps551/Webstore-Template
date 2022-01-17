@@ -36,14 +36,14 @@ exports.postLogin = (req, res, next) => {
 
             // Set cookies
             res.cookie("Token", token, {
-                secure: false, // FIXME set to true for HTTPS
+                secure: true,
                 httpOnly: true,
                 signed: true,
                 maxAge: process.env.TOKEN_EXPIRATION_TIME * 1000,
                 sameSite: 'lax'
             });
             res.cookie("IsLoggedIn", true, {
-                secure: false,
+                secure: true,
                 signed: true,
                 maxAge: process.env.TOKEN_EXPIRATION_TIME * 1000,
                 sameSite: 'lax'
@@ -51,7 +51,7 @@ exports.postLogin = (req, res, next) => {
 
             if (loadedUser.dataValues.role == "Admin") {
                 res.cookie("IsAdmin", true, {
-                    secure: false,
+                    secure: true,
                     signed: true,
                     maxAge: process.env.TOKEN_EXPIRATION_TIME * 1000,
                     sameSite: 'lax'
