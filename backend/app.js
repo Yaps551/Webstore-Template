@@ -1,10 +1,15 @@
 const dotenv = require('dotenv').config();
 const bcrypt = require('bcryptjs');
+const fs = require('fs');
+const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const helmet = require('helmet');
+const compression = require('compression');
+const morgan = require('morgan');
 
 const productRouter = require('./routes/productRouter');
 const authRouter = require('./routes/authRouter');
@@ -27,6 +32,14 @@ var corsOptions = {
     allowedHeaders: 'Content-Type, Authorization',
     credentials: true
 };
+
+// Security, compression
+app.use(helmet());
+app.use(compression());
+
+// Logging
+// const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+// app.use(morgan('combined', { stream: accessLogStream }));
 
 // Cors options middleware
 app.use(cors(corsOptions));

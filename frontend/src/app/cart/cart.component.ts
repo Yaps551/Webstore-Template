@@ -8,7 +8,7 @@ import { CartDao } from 'src/shared/services/cart-dao.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  items: CartItem[];
+  items: CartItem[] = [];
   notificationMessage: string = null;
 
   constructor(private cartDao: CartDao) { }
