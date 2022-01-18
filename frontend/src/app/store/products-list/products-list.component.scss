@@ -9,8 +9,9 @@
     height: 100%;
     width: 100%;
     margin: auto;
-    overflow: auto;
     margin-left: 5%;
+    overflow-y: auto;
+    scroll-padding-bottom: 20rem;
 }
 
 .options-bar {
@@ -48,9 +49,10 @@
 
         @media only screen and (max-width: $mobile-large) {
             flex: 0 1 80%;
-            max-width: 80%;
+            flex-direction: column;
+            width: 100%;
             height: 50%;
-            padding-bottom: 10%;
+            padding: 5% 0;
         }
     }
 }
