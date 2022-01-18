@@ -18,6 +18,11 @@ h1, h2, p, label {
     width: 2.5rem;
     border: 15px;
     border-radius: 25px;
+
+    @media screen and (max-width: $mobile-large) {
+        width: 0;
+        border: none;
+    }
 }
 
 ::-webkit-scrollbar-thumb {

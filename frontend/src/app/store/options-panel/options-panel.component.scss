@@ -1,3 +1,11 @@
+@import '../../../utilities/index.scss';
+
 * {
     overflow: hidden;
+}
+
+.animation {
+    @media screen and (max-width: $mobile-large) {
+        display: none;
+    }
 }
