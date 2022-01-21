@@ -19,7 +19,7 @@ PORT=8080
 APP_PORT=4200
 
 #PostgreSQL settings  
-PG_HOST=localhost
+PG_HOST=localhost  
 PG_USER=[Your postgres user]  
 PG_PASSWORD=[Your postgres user password]  
 PG_DATABASE=[Your database name]  
