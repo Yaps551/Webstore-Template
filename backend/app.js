@@ -113,5 +113,5 @@ sequelize
 .catch(err => {
     const error = new Error(err.message);
     error.httpStatusCode = 500;
-    return next(error);
+    throw new Error(err);
 });
