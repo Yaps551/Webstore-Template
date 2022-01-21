@@ -3,6 +3,7 @@ export class Product {
     name: string;
     description: string;
     imageUrl: string;
+    price: number;
     createdAt: Date;
     updatedAt:Date;
 
@@ -12,6 +13,7 @@ export class Product {
     name: string, 
     description: string,
     imageUrl: string, 
+    price: number,
     createdAt: Date, 
     updatedAt: Date
 ) {
@@ -19,6 +21,7 @@ export class Product {
     this.name = name
     this.description = description
     this.imageUrl = imageUrl
+    this.price = price
     this.createdAt = createdAt
     this.updatedAt = updatedAt
   }

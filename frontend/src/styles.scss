@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 h1, h2, p, label {
     font-family: 'Outfit', sans-serif;
     color: $default-text-color;
@@ -14,6 +18,11 @@ h1, h2, p, label {
     width: 2.5rem;
     border: 15px;
     border-radius: 25px;
+
+    @media screen and (max-width: $mobile-large) {
+        width: 0;
+        border: none;
+    }
 }
 
 ::-webkit-scrollbar-thumb {
@@ -21,4 +30,23 @@ h1, h2, p, label {
     background-clip: padding-box;
     border-radius: 25px;
     background-color: $secondary-color;
+}
+
+input, textarea, select, button {
+    background-color: rgba($color: $secondary-color, $alpha: 0.1);
+    border: 1px solid $primary-color;
+}
+
+.notification {
+    display: flex;
+    margin: 3% 0;
+    width: 100%;
+    justify-content: center;
+
+    .notification-message {
+        text-align: center;
+        width: 30%;
+        border: 1px solid $error-color;
+        font-size: 150%;
+    }
 }

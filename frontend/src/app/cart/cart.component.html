@@ -1,1 +1,5 @@
-<p>cart works!</p>
+<app-cart-item *ngFor="let item of items" [item]="item" (itemDeleted)="itemDeleted($event)"></app-cart-item>
+
+<h1 *ngIf="items.length == 0">
+    Your cart is empty!
+</h1>

@@ -1,0 +1,33 @@
+<form class="product-wrapper" #productForm="ngForm">
+    <div class="product-image">
+        <img [src]="product.imageUrl" alt="no image found">
+    </div>
+    <div class="product-details">
+        <div class="name">
+            <input type="text" (change)="onChanges()" ngModel="{{ product.name }}" id="name" name="name" maxlength="25">
+        </div>
+        <div class="description">
+            <input type="text" (change)="onChanges()" ngModel="{{ product.description }}" name="description" maxlength="100">
+        </div>
+        <div class="price">
+            <input type="number" (change)="onChanges()" ngModel="{{ product.price }}" name="price">
+        </div>
+        <div class="imageUrl">
+            <input type="text" (change)="onChanges()" ngModel="{{ product.imageUrl }}" name="imageUrl">
+        </div>
+    </div>
+    <div class="buttons">
+        <button type="button" *ngIf="!attemptingDelete" [disabled]="!changesMade" (click)="onSaveChanges(productForm)">Save changes</button>
+        <button type="button" *ngIf="!attemptingDelete" [disabled]="!changesMade" (click)="onDiscardChanges(productForm)">Discard changes</button>
+        <button type="button" *ngIf="!attemptingDelete" [disabled]="changesMade" (click)="onDelete()">Delete product</button>
+
+        <button type="button" *ngIf="attemptingDelete" (click)="onConfirmDelete()">Confirm deletion</button>
+        <button type="button" *ngIf="attemptingDelete" (click)="onCancelDelete()">Cancel deletion</button>
+    </div>
+</form>
+
+<div class="notification" *ngIf="notificationMessage">
+    <div class="notification-message">
+        {{ notificationMessage }}
+    </div>
+</div>

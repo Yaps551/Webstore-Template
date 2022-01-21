@@ -8,8 +8,8 @@
         <div class="product-bottom-section">
             <p class="product-description">{{ product.description }}</p>
             <div class="options">
-                <p class="product-price">€19.99</p>
-                <button>Add to cart</button>
+                <p class="product-price">€{{ product.price }}</p>
+                <button type="button" (click)="onAddToCart()">Add to cart</button>
             </div>
         </div>
     </div>

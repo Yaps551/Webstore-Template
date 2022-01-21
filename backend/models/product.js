@@ -14,7 +14,12 @@ const Product = sequelize.define('product', {
         allowNull: false
     },
     description: Sequelize.STRING,
-    imageUrl: Sequelize.STRING
+    imageUrl: Sequelize.STRING,
+    price: {
+        type: Sequelize.DOUBLE,
+        allowNull: true,
+        defaultValue: 9.99
+    }
 });
 
 module.exports = Product;

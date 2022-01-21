@@ -1,0 +1,51 @@
+@import '../../utilities/index.scss';
+
+h1 {
+    margin-bottom: 3%;
+}
+
+.management-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    gap: 5%;
+}
+
+.products {
+    height: 100%;
+    width: 70%;
+    overflow: auto;
+
+    @media screen and (max-width: $desktop-small) {
+        width: 80%;
+    }
+}
+
+.add-product {
+    overflow: auto;
+}
+
+.product-fields {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+}
+
+.preview-image {
+    align-self: center;
+    height: 50%;
+    width: 50%;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        margin-top: 10%;
+    }
+}

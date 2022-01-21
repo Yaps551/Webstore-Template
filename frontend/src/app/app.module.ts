@@ -14,6 +14,10 @@ import { OptionsPanelComponent } from './store/options-panel/options-panel.compo
 import { AuthComponent } from './auth/auth.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { StoreManagementComponent } from './store-management/store-management.component';
+import { ProductManagementComponent } from './store-management/product-management/product-management.component';
+import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import { BroccoliAnimationComponent } from './broccoli-animation/broccoli-animation.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,10 @@ import { FormsModule } from '@angular/forms';
     ProductComponent,
     OptionsPanelComponent,
     AuthComponent,
+    StoreManagementComponent,
+    ProductManagementComponent,
+    CartItemComponent,
+    BroccoliAnimationComponent,
   ],
   imports: [
     BrowserModule,

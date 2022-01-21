@@ -1,24 +1,26 @@
 @import '../../../../utilities/index.scss';
 
-* {
-    box-sizing: border-box;
-}
-
 .product-wrapper {
     border-bottom: 2px solid $primary-color;
     height: 100%;
     width: 100%;
-    background-color: rgba($color: $secondary-color, $alpha: 0.1);
+    background-color: $window-background-color;
 
     box-shadow: $primary-color-box-shadow;
+    padding-bottom: 10%;
 }
 
 .product-content {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 5%;
     height: 100%;
     padding: 5% 1%;
+
+    @media screen and (max-width: $mobile-large) {
+        font-size: 80%;
+    }
 }
 
 .product-name
@@ -28,7 +30,11 @@
     font-size: 130%;
     text-align: center;
     white-space: nowrap;
-    overflow: hidden;
+    word-break: break-word;
+
+    @media screen and (max-width: $mobile-large) {
+        font-size: 100%;
+    }
 }
 
 .product-image {
@@ -58,14 +64,20 @@
 }
 
 .product-bottom-section {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 10%;
     height: 30%;
+    width: 100%;
 
     .product-description {
         text-align: center;
+        height: 70%;
+        width: 100%;
+        word-wrap: break-word;
+        overflow-y: scroll;
     }
 
     .options {
@@ -74,6 +86,7 @@
         justify-content: center;
         align-items: center;
         gap: 5%;
+        height: 30%;
 
         button {
             background-color: $button-color;
@@ -83,6 +96,10 @@
             border-radius: 8%;
 
             cursor: pointer;
+
+            @media screen and (max-width: $mobile-large) {
+                padding: 0.2rem;
+            }
         }
     }
 }

@@ -9,7 +9,7 @@
     <div class="bar">
         <div class="title-section">
             <h1 class="title">
-                Webshop
+                The Vegetarian's webstore
             </h1>
         </div>
         <ul class="navigation-links">
@@ -23,21 +23,56 @@
                     <h1 routerLinkActive="active-link">Store</h1>
                 </a>
             </li>
-            <li>
+            <li *ngIf="isLoggedIn">
                 <a routerLink="/cart">
                     <h1 routerLinkActive="active-link">Cart</h1>
                 </a>
             </li>
-            <li>
-                <a routerLink="/contact">
-                    <h1 routerLinkActive="active-link">Contact</h1>
+            <li *ngIf="isAdmin">
+                <a routerLink="/management">
+                    <h1 routerLinkActive="active-link">Management</h1>
                 </a>
             </li>
             <li>
-                <a routerLink="/auth">
+                <a routerLink="/auth" *ngIf="!isLoggedIn">
                     <h1 routerLinkActive="active-link">Login</h1>
+                </a>
+                <a *ngIf="isLoggedIn">
+                    <h1 class="clickable" (click)="onLogout()">Logout</h1>
                 </a>
             </li>
         </ul>
-    </div>    
+    </div>
+    <div class="burg" (click)="openMenu()"></div>
 </div>
+
+<ul id="burger-links" class="invisible">
+    <li>
+        <a routerLink="/">
+            <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</h1>
+        </a>
+    </li>
+    <li>
+        <a routerLink="/store">
+            <h1 routerLinkActive="active-link">Store</h1>
+        </a>
+    </li>
+    <li *ngIf="isLoggedIn">
+        <a routerLink="/cart">
+            <h1 routerLinkActive="active-link">Cart</h1>
+        </a>
+    </li>
+    <li *ngIf="isAdmin">
+        <a routerLink="/management">
+            <h1 routerLinkActive="active-link">Management</h1>
+        </a>
+    </li>
+    <li>
+        <a routerLink="/auth" *ngIf="!isLoggedIn">
+            <h1 routerLinkActive="active-link">Login</h1>
+        </a>
+        <a *ngIf="isLoggedIn">
+            <h1 class="clickable" (click)="onLogout()">Logout</h1>
+        </a>
+    </li>
+</ul>
