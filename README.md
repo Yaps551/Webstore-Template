@@ -3,36 +3,38 @@ To run the application first clone this git repository and then follow the instr
 
 # Frontend setup instructions
 1. Run npm install to install necessary dependencies
-2. Start the app with ng serve/npm start. The webapp will run on port 4200
+2. Start the app with npm start. The webapp will run on port 4200
 
 # Database setup instructions
-1. Create a new postgreSQL database. This can be done by using the query dataset.sql included in the backend directory or manually in pgadmin.
-
-# IMGBB setup instructions
-ImgBB is used to host the images used for products.
-1. Create a imgBB account
-2. Go to https://api.imgbb.com/ and generate an API key for your account
+1. Create a new postgreSQL database with a desired name. The creation of tables and relations will all be handled by Sequelize.
 
 # Backend setup instructions
 1. Add .env file to the backend folder.
 2. Add the following content to the .env file and fill in the required fields:
 
-    #API settings
-    PORT=[desired port for the backend]
+#API settings
+PORT=8080
 
-    #Webapp settings
-    APP_PORT=4200
+#Webapp settings
+APP_PORT=4200
 
+#PostgreSQL settings
+PG_HOST=localhost
+PG_USER=[Your postgres user]
+PG_PASSWORD=[Your postgres user password]
+PG_DATABASE=[Your database name]
+PG_PORT=[Your postgres server port (5432 by default)]
 
-    #PostgreSQL settings
-    PG_HOST=localhost
-    PG_USER=postgres
-    PG_PASSWORD=[Your postgreSQL password]
-    PG_DATABASE=[Your postgreSQL database]
-    PG_PORT=[Your PostgreSQL port, 5432 by default]
+#Default admin settings
+DEFAULT_ADMIN_EMAIL=[Email for the default admin. This will be the only available admin account unless another one is manually added in the database]
+DEFAULT_ADMIN_PASSWORD=[Password for the default admin]
 
-    #ImgBB settings
-    IMGBB_KEY=[Your IMGBB API key]
+#JWT settings
+ACCESS_TOKEN_KEY=[Random string used for JWT generation]
+TOKEN_EXPIRATION_TIME=3600
+
+#Cookie settings
+COOKIE_PARSER_KEY=[Random string used for cookie parsing]httpsh
     
 3. Run npm install
 4. Start the API with npm start
