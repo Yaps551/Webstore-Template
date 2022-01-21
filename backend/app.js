@@ -109,9 +109,6 @@ sequelize
     })
 })
 .then(() => {
-    // app.listen(port, () => {
-    //     console.log(`API server running on port: ${port}`);
-    // });
     https.createServer({ key: privateKey, cert: certificate }, app).listen(port, () => {
             console.log(`API server running on port: ${port}`);
         });
@@ -119,5 +116,5 @@ sequelize
 .catch(err => {
     const error = new Error(err.message);
     error.httpStatusCode = 500;
-    return next(error);
+    throw new Error(err);
 });
