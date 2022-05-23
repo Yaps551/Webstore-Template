@@ -104,11 +104,11 @@
     }
 
     h1 {
-        color: $default-text-color;
+        color: $highlight-color;
     }
 
     h1.active-link {
-        color: $highlight-color;
+        color: $default-text-color;
     }
 }
 

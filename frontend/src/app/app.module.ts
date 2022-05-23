@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BroccoliAnimationComponent } from './broccoli-animation/broccoli-animation.component';
+import { ShowcaseComponent } from './showcase/showcase.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BroccoliAnimationComponent } from './broccoli-animation/broccoli-animat
     HeaderComponent,
     HomeComponent,
     BroccoliAnimationComponent,
+    ShowcaseComponent,
   ],
   imports: [
     BrowserModule,

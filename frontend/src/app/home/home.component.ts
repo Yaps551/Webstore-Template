@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  slideShowLength: number = 6;
+  slideShowLength: number = 4;
   currentSlideIndex: number = 0;
   slideDuration: number = 3000;
 

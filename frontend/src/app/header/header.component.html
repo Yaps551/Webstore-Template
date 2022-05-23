@@ -18,6 +18,11 @@
                     <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</h1>
                 </a>
             </li>
+            <li>
+                <a routerLink="/showcase">
+                    <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Showcase</h1>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="burg" (click)="openMenu()"></div>
@@ -27,6 +32,11 @@
     <li>
         <a routerLink="/">
             <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</h1>
+        </a>
+    </li>
+    <li>
+        <a routerLink="/showcase">
+            <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Showcase</h1>
         </a>
     </li>
 </ul>
