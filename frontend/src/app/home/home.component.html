@@ -1,14 +1,21 @@
 <div class="home-wrapper">
     <div class="left-section">
-        <h1 class="title">Welcome to the vegetarian's webstore</h1>
+        <h1 class="title">Hi, I'm Kaz</h1>
         <p>
-            Your one-stop shop for all your vegetarian needs.
+            3rd year Software engineering student.
         </p>
         <p>
-            Head over to the store to check out all of our amazing products and sign up to start shopping!
+            Experience with full-stack web development, 2D, 3D and VR Unity game development and SQL databases.
         </p>
     </div>
     <div class="right-section">
-        <img id="latest-product" src="https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="">
+        <div id="image-window">
+            <img class="slide" src="../../assets/gifs/VVE.gif" alt="" *ngIf="currentSlideIndex == 1">
+            <img class="slide" src="../../assets/gifs/latest.gif" alt="" *ngIf="currentSlideIndex == 2">
+            <img class="slide" src="../../assets/gifs/VR.gif" alt="" *ngIf="currentSlideIndex == 3">
+            <img class="slide" src="../../assets/gifs/old 2d.gif" alt="" *ngIf="currentSlideIndex == 4">
+            <img class="slide" src="../../assets/gifs/3d.gif" alt="" *ngIf="currentSlideIndex == 5">
+            <img class="slide" src="../../assets/gifs/lighting.gif" alt="" *ngIf="currentSlideIndex == 6">
+        </div>
     </div>
 </div>

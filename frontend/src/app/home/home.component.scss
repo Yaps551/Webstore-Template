@@ -6,24 +6,38 @@
     justify-content: space-evenly;
     height: 100%;
 
-    @media screen and (max-width: $mobile-large) {
+    @media screen and (max-width: $desktop-small) {
         flex-direction: column;
     }
 
     .left-section,
     .right-section {
         display: flex;
-        width: 35%;
+        width: 45%;
 
         h1, p {
             padding: 1rem 0;
         }
 
-        #latest-product {
-            height: auto;
+        #image-window {
             width: 100%;
-            border-radius: $card-borders;
-            box-shadow: $default-box-shadow;
+            height: 30rem;
+
+            .slide {
+                height: 100%;
+                width: 100%;
+                border-radius: $card-borders;
+                box-shadow: $default-box-shadow;
+                image-rendering: -webkit-optimize-contrast;
+            }
+        }
+
+        @media screen and (max-width: $desktop-small) {
+            width: 80%;
+        }
+
+        @media screen and (max-width: $mobile-large) {
+            width: 90%;
         }
     }
 
