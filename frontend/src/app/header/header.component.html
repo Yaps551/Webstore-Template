@@ -18,29 +18,6 @@
                     <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</h1>
                 </a>
             </li>
-            <li>
-                <a routerLink="/store">
-                    <h1 routerLinkActive="active-link">Showcase</h1>
-                </a>
-            </li>
-            <li *ngIf="isLoggedIn">
-                <a routerLink="/cart">
-                    <h1 routerLinkActive="active-link">Cart</h1>
-                </a>
-            </li>
-            <!-- <li *ngIf="isAdmin">
-                <a routerLink="/management">
-                    <h1 routerLinkActive="active-link">Management</h1>
-                </a>
-            </li> -->
-            <!-- <li>
-                <a routerLink="/auth" *ngIf="!isLoggedIn">
-                    <h1 routerLinkActive="active-link">Login</h1>
-                </a>
-                <a *ngIf="isLoggedIn">
-                    <h1 class="clickable" (click)="onLogout()">Logout</h1>
-                </a>
-            </li> -->
         </ul>
     </div>
     <div class="burg" (click)="openMenu()"></div>
@@ -50,29 +27,6 @@
     <li>
         <a routerLink="/">
             <h1 routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</h1>
-        </a>
-    </li>
-    <li>
-        <a routerLink="/store">
-            <h1 routerLinkActive="active-link">Store</h1>
-        </a>
-    </li>
-    <li *ngIf="isLoggedIn">
-        <a routerLink="/cart">
-            <h1 routerLinkActive="active-link">Cart</h1>
-        </a>
-    </li>
-    <li *ngIf="isAdmin">
-        <a routerLink="/management">
-            <h1 routerLinkActive="active-link">Management</h1>
-        </a>
-    </li>
-    <li>
-        <a routerLink="/auth" *ngIf="!isLoggedIn">
-            <h1 routerLinkActive="active-link">Login</h1>
-        </a>
-        <a *ngIf="isLoggedIn">
-            <h1 class="clickable" (click)="onLogout()">Logout</h1>
         </a>
     </li>
 </ul>

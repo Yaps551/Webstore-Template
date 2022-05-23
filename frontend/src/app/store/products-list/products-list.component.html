@@ -1,7 +1,0 @@
-<div class="product-list-wrapper">
-    <p *ngIf="products.length < 1">No products available</p>
-    <h1 *ngIf="errorMessage != null">{{ errorMessage }}</h1>
-    <div class="items">
-        <app-product class="item" *ngFor="let product of filteredProducts" [product]="product" [isLoggedIn]="isLoggedIn"></app-product>
-    </div>
-</div>
