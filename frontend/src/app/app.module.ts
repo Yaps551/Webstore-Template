@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,30 +19,23 @@ import { ProductManagementComponent } from './store-management/product-managemen
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { BroccoliAnimationComponent } from './broccoli-animation/broccoli-animation.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    StoreComponent,
-    CartComponent,
-    ContactComponent,
-    ProductsListComponent,
-    ProductComponent,
-    OptionsPanelComponent,
-    AuthComponent,
-    StoreManagementComponent,
-    ProductManagementComponent,
-    CartItemComponent,
-    BroccoliAnimationComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HeaderComponent,
+        HomeComponent,
+        StoreComponent,
+        CartComponent,
+        ContactComponent,
+        ProductsListComponent,
+        ProductComponent,
+        OptionsPanelComponent,
+        AuthComponent,
+        StoreManagementComponent,
+        ProductManagementComponent,
+        CartItemComponent,
+        BroccoliAnimationComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
