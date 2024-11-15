@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
 import { map, Observable } from "rxjs";
 import { authDao } from "../services/auth-dao.service";
 
 @Injectable({providedIn: 'root'})
-export class AdminGuard implements CanActivate {
+export class AdminGuard  {
 
     constructor(private router: Router, private authDao: authDao) {}
 
